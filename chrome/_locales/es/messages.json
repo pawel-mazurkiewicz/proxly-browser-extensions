@@ -1,0 +1,240 @@
+{
+  "extensionName": {
+    "message": "Extensión de Navegador Proxly",
+    "description": "Nombre de la extensión del navegador"
+  },
+  "extensionDescription": {
+    "message": "Enrutar enlaces web a través de Proxly para selección inteligente de navegador",
+    "description": "Descripción de la funcionalidad de la extensión del navegador"
+  },
+  "contextMenuTitle": {
+    "message": "Abrir con Proxly",
+    "description": "Texto del menú contextual para abrir enlaces con Proxly"
+  },
+  "contextMenuTitleAll": {
+    "message": "Abrir con Proxly (modo todos los enlaces activo)",
+    "description": "Texto del menú contextual en modo todos los enlaces"
+  },
+  "settingsTitle": {
+    "message": "Configuración de Extensión Proxly",
+    "description": "Título para la página de configuración de la extensión"
+  },
+  "settingsSubtitle": {
+    "message": "Configura cómo la extensión maneja los enlaces web",
+    "description": "Subtítulo para la página de configuración de la extensión"
+  },
+  "settingsModeTitle": {
+    "message": "Modo de Manejo de Enlaces",
+    "description": "Título para la configuración del modo de manejo de enlaces"
+  },
+  "modeAllLinks": {
+    "message": "Capturar todos los enlaces externos",
+    "description": "Opción para capturar todos los enlaces externos"
+  },
+  "modeAltClick": {
+    "message": "Solo Alt+clic",
+    "description": "Opción para capturar solo enlaces con Alt+clic"
+  },
+  "modeDescription": {
+    "message": "Elige cómo la extensión maneja los clics en enlaces",
+    "description": "Descripción para la configuración de selección de modo"
+  },
+  "modeAllLinksDescription": {
+    "message": "Todos los enlaces externos (enlaces a otros sitios web) serán enrutados a través de Proxly automáticamente",
+    "description": "Descripción detallada para el modo todos los enlaces"
+  },
+  "modeAltClickDescription": {
+    "message": "Solo los enlaces clickeados mientras se mantiene presionada la tecla Alt serán capturados por Proxly",
+    "description": "Descripción detallada para el modo Alt+clic"
+  },
+  "feedbackTitle": {
+    "message": "Retroalimentación del Usuario",
+    "description": "Título para la sección de configuración de retroalimentación"
+  },
+  "feedbackDescription": {
+    "message": "Configura la retroalimentación visual y auditiva cuando se capturen enlaces",
+    "description": "Descripción para la sección de configuración de retroalimentación"
+  },
+  "enableVisualFeedback": {
+    "message": "Mostrar retroalimentación visual",
+    "description": "Opción para habilitar retroalimentación visual"
+  },
+  "visualFeedbackDescription": {
+    "message": "Mostrar un indicador visual breve cuando se capturen enlaces",
+    "description": "Descripción para la opción de retroalimentación visual"
+  },
+  "enableSoundFeedback": {
+    "message": "Reproducir retroalimentación sonora",
+    "description": "Opción para habilitar retroalimentación sonora"
+  },
+  "soundFeedbackDescription": {
+    "message": "Reproducir un sonido sutil cuando se capturen enlaces",
+    "description": "Descripción para la opción de retroalimentación sonora"
+  },
+  "installationTitle": {
+    "message": "Estado de Instalación",
+    "description": "Título para la sección de estado de instalación"
+  },
+  "extensionInstalled": {
+    "message": "Extensión del navegador instalada y activa",
+    "description": "Mensaje de estado indicando que la extensión está instalada"
+  },
+  "checkingProxlyApp": {
+    "message": "Verificando estado de la aplicación Proxly...",
+    "description": "Mensaje de estado mientras se verifica la aplicación Proxly"
+  },
+  "proxlyAppRunning": {
+    "message": "La aplicación Proxly está ejecutándose",
+    "description": "Mensaje de estado cuando la aplicación Proxly está ejecutándose"
+  },
+  "proxlyAppNotRunning": {
+    "message": "La aplicación Proxly no está ejecutándose o no responde",
+    "description": "Mensaje de estado cuando la aplicación Proxly no está ejecutándose"
+  },
+  "requirementsTitle": {
+    "message": "Requisitos",
+    "description": "Título para la sección de requisitos"
+  },
+  "requirementProxlyApp": {
+    "message": "La aplicación Proxly debe estar instalada y ejecutándose en tu Mac",
+    "description": "Requisito para la aplicación Proxly"
+  },
+  "requirementPermissions": {
+    "message": "La extensión requiere permiso para acceder a todos los sitios web",
+    "description": "Requisito para permisos"
+  },
+  "requirementContextMenu": {
+    "message": "Usa el menú contextual del clic derecho o Alt+clic para capturar enlaces",
+    "description": "Requisito para instrucciones de uso"
+  },
+  "saveSettings": {
+    "message": "Guardar Configuración",
+    "description": "Texto del botón guardar configuración"
+  },
+  "resetSettings": {
+    "message": "Restablecer a Valores Predeterminados",
+    "description": "Texto del botón restablecer configuración"
+  },
+  "testConnection": {
+    "message": "Probar Conexión",
+    "description": "Texto del botón probar conexión"
+  },
+  "extensionVersion": {
+    "message": "Versión de la Extensión",
+    "description": "Etiqueta de versión de la extensión"
+  },
+  "helpAndSupport": {
+    "message": "Ayuda y Soporte",
+    "description": "Texto del enlace de ayuda y soporte"
+  },
+  "privacyPolicy": {
+    "message": "Política de Privacidad",
+    "description": "Texto del enlace de política de privacidad"
+  },
+  "accessibilitySettingsForm": {
+    "message": "Formulario de configuración de la extensión",
+    "description": "Etiqueta de accesibilidad para el formulario de configuración"
+  },
+  "accessibilityModeToggle": {
+    "message": "Alternador de modo de manejo de enlaces",
+    "description": "Etiqueta de accesibilidad para el control alternador de modo"
+  },
+  "accessibilityModeHint": {
+    "message": "Cambiar entre capturar todos los enlaces o solo enlaces con Alt+clic",
+    "description": "Sugerencia de accesibilidad para el control alternador de modo"
+  },
+  "accessibilityLinkCapture": {
+    "message": "El enlace será abierto con Proxly",
+    "description": "Anuncio de accesibilidad cuando se captura un enlace"
+  },
+  "notificationCaptured": {
+    "message": "Enlace capturado por Proxly",
+    "description": "Texto de notificación cuando se captura exitosamente un enlace"
+  },
+  "errorInvalidUrl": {
+    "message": "URL inválida detectada",
+    "description": "Mensaje de error para URLs inválidas"
+  },
+  "errorProxlyNotRunning": {
+    "message": "La aplicación Proxly no está ejecutándose",
+    "description": "Mensaje de error cuando la aplicación Proxly no está disponible"
+  },
+  "savingSettings": {
+    "message": "Guardando configuración...",
+    "description": "Mensaje de estado mientras se guarda la configuración"
+  },
+  "settingsSaved": {
+    "message": "Configuración guardada exitosamente",
+    "description": "Mensaje de éxito para configuración guardada"
+  },
+  "settingsSavedAnnouncement": {
+    "message": "La configuración se ha guardado exitosamente",
+    "description": "Anuncio de lector de pantalla para configuración guardada"
+  },
+  "settingsSaveError": {
+    "message": "Error al guardar la configuración",
+    "description": "Mensaje de error para fallo al guardar configuración"
+  },
+  "settingsSaveErrorAnnouncement": {
+    "message": "Error al guardar la configuración",
+    "description": "Anuncio de lector de pantalla para error al guardar configuración"
+  },
+  "resetConfirmation": {
+    "message": "¿Estás seguro de que quieres restablecer toda la configuración a sus valores predeterminados?",
+    "description": "Mensaje de confirmación para restablecer configuración"
+  },
+  "resettingSettings": {
+    "message": "Restableciendo a valores predeterminados...",
+    "description": "Mensaje de estado mientras se restablece la configuración"
+  },
+  "settingsReset": {
+    "message": "Configuración restablecida a valores predeterminados",
+    "description": "Mensaje de éxito para configuración restablecida"
+  },
+  "settingsResetAnnouncement": {
+    "message": "La configuración se ha restablecido a valores predeterminados",
+    "description": "Anuncio de lector de pantalla para configuración restablecida"
+  },
+  "settingsResetError": {
+    "message": "Error al restablecer la configuración",
+    "description": "Mensaje de error para fallo al restablecer configuración"
+  },
+  "testingConnection": {
+    "message": "Probando conexión a Proxly...",
+    "description": "Mensaje de estado mientras se prueba la conexión"
+  },
+  "connectionSuccess": {
+    "message": "Prueba de conexión exitosa",
+    "description": "Mensaje de éxito para prueba de conexión"
+  },
+  "connectionTestError": {
+    "message": "Prueba de conexión falló",
+    "description": "Mensaje de error para prueba de conexión fallida"
+  },
+  "visualFeedbackEnabled": {
+    "message": "Retroalimentación visual habilitada",
+    "description": "Anuncio cuando se habilita la retroalimentación visual"
+  },
+  "visualFeedbackDisabled": {
+    "message": "Retroalimentación visual deshabilitada",
+    "description": "Anuncio cuando se deshabilita la retroalimentación visual"
+  },
+  "soundFeedbackEnabled": {
+    "message": "Retroalimentación sonora habilitada",
+    "description": "Anuncio cuando se habilita la retroalimentación sonora"
+  },
+  "soundFeedbackDisabled": {
+    "message": "Retroalimentación sonora deshabilitada",
+    "description": "Anuncio cuando se deshabilita la retroalimentación sonora"
+  },
+  "modeChanged": {
+    "message": "Modo de manejo de enlaces cambiado: $1",
+    "description": "Anuncio cuando se cambia el modo de manejo de enlaces",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "Solo enlaces clickeados mientras se mantiene presionada la tecla Alt serán capturados"
+      }
+    }
+  }
+}

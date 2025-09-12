@@ -1,0 +1,240 @@
+{
+  "extensionName": {
+    "message": "Proxly Browser Extension",
+    "description": "Name of the browser extension"
+  },
+  "extensionDescription": {
+    "message": "Route web links through Proxly for intelligent browser selection",
+    "description": "Description of the browser extension functionality"
+  },
+  "contextMenuTitle": {
+    "message": "Open with Proxly",
+    "description": "Context menu item text for opening links with Proxly"
+  },
+  "contextMenuTitleAll": {
+    "message": "Open with Proxly (all links mode active)",
+    "description": "Context menu item text when in all links mode"
+  },
+  "settingsTitle": {
+    "message": "Proxly Extension Settings",
+    "description": "Title for the extension settings page"
+  },
+  "settingsSubtitle": {
+    "message": "Configure how the extension handles web links",
+    "description": "Subtitle for the extension settings page"
+  },
+  "settingsModeTitle": {
+    "message": "Link Handling Mode",
+    "description": "Title for the link handling mode setting"
+  },
+  "modeAllLinks": {
+    "message": "Capture all external links",
+    "description": "Option to capture all external links"
+  },
+  "modeAltClick": {
+    "message": "Alt+click only",
+    "description": "Option to capture only Alt+clicked links"
+  },
+  "modeDescription": {
+    "message": "Choose how the extension handles link clicks",
+    "description": "Description for the mode selection setting"
+  },
+  "modeAllLinksDescription": {
+    "message": "All external links (links to other websites) will be routed through Proxly automatically",
+    "description": "Detailed description for all links mode"
+  },
+  "modeAltClickDescription": {
+    "message": "Only links clicked while holding the Alt key will be captured by Proxly",
+    "description": "Detailed description for Alt+click mode"
+  },
+  "feedbackTitle": {
+    "message": "User Feedback",
+    "description": "Title for the feedback settings section"
+  },
+  "feedbackDescription": {
+    "message": "Configure visual and audio feedback when links are captured",
+    "description": "Description for the feedback settings section"
+  },
+  "enableVisualFeedback": {
+    "message": "Show visual feedback",
+    "description": "Option to enable visual feedback"
+  },
+  "visualFeedbackDescription": {
+    "message": "Display a brief visual indicator when links are captured",
+    "description": "Description for visual feedback option"
+  },
+  "enableSoundFeedback": {
+    "message": "Play sound feedback",
+    "description": "Option to enable sound feedback"
+  },
+  "soundFeedbackDescription": {
+    "message": "Play a subtle sound when links are captured",
+    "description": "Description for sound feedback option"
+  },
+  "installationTitle": {
+    "message": "Installation Status",
+    "description": "Title for installation status section"
+  },
+  "extensionInstalled": {
+    "message": "Browser extension installed and active",
+    "description": "Status message indicating extension is installed"
+  },
+  "checkingProxlyApp": {
+    "message": "Checking Proxly app status...",
+    "description": "Status message while checking Proxly app"
+  },
+  "proxlyAppRunning": {
+    "message": "Proxly app is running",
+    "description": "Status message when Proxly app is running"
+  },
+  "proxlyAppNotRunning": {
+    "message": "Proxly app is not running or not responding",
+    "description": "Status message when Proxly app is not running"
+  },
+  "requirementsTitle": {
+    "message": "Requirements",
+    "description": "Title for requirements section"
+  },
+  "requirementProxlyApp": {
+    "message": "Proxly app must be installed and running on your Mac",
+    "description": "Requirement for Proxly app"
+  },
+  "requirementPermissions": {
+    "message": "Extension requires permission to access all websites",
+    "description": "Requirement for permissions"
+  },
+  "requirementContextMenu": {
+    "message": "Use right-click context menu or Alt+click to capture links",
+    "description": "Requirement for usage instructions"
+  },
+  "saveSettings": {
+    "message": "Save Settings",
+    "description": "Save settings button text"
+  },
+  "resetSettings": {
+    "message": "Reset to Defaults",
+    "description": "Reset settings button text"
+  },
+  "testConnection": {
+    "message": "Test Connection",
+    "description": "Test connection button text"
+  },
+  "extensionVersion": {
+    "message": "Extension Version",
+    "description": "Extension version label"
+  },
+  "helpAndSupport": {
+    "message": "Help & Support",
+    "description": "Help and support link text"
+  },
+  "privacyPolicy": {
+    "message": "Privacy Policy",
+    "description": "Privacy policy link text"
+  },
+  "accessibilitySettingsForm": {
+    "message": "Extension settings form",
+    "description": "Accessibility label for the settings form"
+  },
+  "accessibilityModeToggle": {
+    "message": "Link handling mode toggle",
+    "description": "Accessibility label for mode toggle control"
+  },
+  "accessibilityModeHint": {
+    "message": "Switch between capturing all links or only Alt+clicked links",
+    "description": "Accessibility hint for mode toggle control"
+  },
+  "accessibilityLinkCapture": {
+    "message": "Link will be opened with Proxly",
+    "description": "Accessibility announcement when link is captured"
+  },
+  "notificationCaptured": {
+    "message": "Link captured by Proxly",
+    "description": "Notification text when link is successfully captured"
+  },
+  "errorInvalidUrl": {
+    "message": "Invalid URL detected",
+    "description": "Error message for invalid URLs"
+  },
+  "errorProxlyNotRunning": {
+    "message": "Proxly app not running",
+    "description": "Error message when Proxly app is not available"
+  },
+  "savingSettings": {
+    "message": "Saving settings...",
+    "description": "Status message while saving settings"
+  },
+  "settingsSaved": {
+    "message": "Settings saved successfully",
+    "description": "Success message for saved settings"
+  },
+  "settingsSavedAnnouncement": {
+    "message": "Settings have been saved successfully",
+    "description": "Screen reader announcement for saved settings"
+  },
+  "settingsSaveError": {
+    "message": "Failed to save settings",
+    "description": "Error message for failed settings save"
+  },
+  "settingsSaveErrorAnnouncement": {
+    "message": "Failed to save settings",
+    "description": "Screen reader announcement for settings save error"
+  },
+  "resetConfirmation": {
+    "message": "Are you sure you want to reset all settings to their default values?",
+    "description": "Confirmation message for resetting settings"
+  },
+  "resettingSettings": {
+    "message": "Resetting to defaults...",
+    "description": "Status message while resetting settings"
+  },
+  "settingsReset": {
+    "message": "Settings reset to defaults",
+    "description": "Success message for reset settings"
+  },
+  "settingsResetAnnouncement": {
+    "message": "Settings have been reset to default values",
+    "description": "Screen reader announcement for reset settings"
+  },
+  "settingsResetError": {
+    "message": "Failed to reset settings",
+    "description": "Error message for failed settings reset"
+  },
+  "testingConnection": {
+    "message": "Testing connection to Proxly...",
+    "description": "Status message while testing connection"
+  },
+  "connectionSuccess": {
+    "message": "Connection test successful",
+    "description": "Success message for connection test"
+  },
+  "connectionTestError": {
+    "message": "Connection test failed",
+    "description": "Error message for failed connection test"
+  },
+  "visualFeedbackEnabled": {
+    "message": "Visual feedback enabled",
+    "description": "Announcement when visual feedback is enabled"
+  },
+  "visualFeedbackDisabled": {
+    "message": "Visual feedback disabled",
+    "description": "Announcement when visual feedback is disabled"
+  },
+  "soundFeedbackEnabled": {
+    "message": "Sound feedback enabled",
+    "description": "Announcement when sound feedback is enabled"
+  },
+  "soundFeedbackDisabled": {
+    "message": "Sound feedback disabled",
+    "description": "Announcement when sound feedback is disabled"
+  },
+  "modeChanged": {
+    "message": "Link handling mode changed: $1",
+    "description": "Announcement when link handling mode is changed",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "Only links clicked while holding the Alt key will be captured"
+      }
+    }
+  }
+}

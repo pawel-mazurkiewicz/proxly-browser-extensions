@@ -1,0 +1,240 @@
+{
+  "extensionName": {
+    "message": "Proxly Browser-Erweiterung",
+    "description": "Name der Browser-Erweiterung"
+  },
+  "extensionDescription": {
+    "message": "Leite Web-Links über Proxly für intelligente Browser-Auswahl",
+    "description": "Beschreibung der Browser-Erweiterungs-Funktionalität"
+  },
+  "contextMenuTitle": {
+    "message": "Mit Proxly öffnen",
+    "description": "Kontextmenü-Text zum Öffnen von Links mit Proxly"
+  },
+  "contextMenuTitleAll": {
+    "message": "Mit Proxly öffnen (Alle-Links-Modus aktiv)",
+    "description": "Kontextmenü-Text im Alle-Links-Modus"
+  },
+  "settingsTitle": {
+    "message": "Proxly Erweiterungs-Einstellungen",
+    "description": "Titel für die Erweiterungs-Einstellungsseite"
+  },
+  "settingsSubtitle": {
+    "message": "Konfiguriere wie die Erweiterung Web-Links behandelt",
+    "description": "Untertitel für die Erweiterungs-Einstellungsseite"
+  },
+  "settingsModeTitle": {
+    "message": "Link-Behandlungsmodus",
+    "description": "Titel für die Link-Behandlungsmodus-Einstellung"
+  },
+  "modeAllLinks": {
+    "message": "Alle externen Links erfassen",
+    "description": "Option zum Erfassen aller externen Links"
+  },
+  "modeAltClick": {
+    "message": "Nur Alt+Klick",
+    "description": "Option zum Erfassen nur von Alt+geklickten Links"
+  },
+  "modeDescription": {
+    "message": "Wähle wie die Erweiterung Link-Klicks behandelt",
+    "description": "Beschreibung für die Modus-Auswahl-Einstellung"
+  },
+  "modeAllLinksDescription": {
+    "message": "Alle externen Links (Links zu anderen Websites) werden automatisch über Proxly geleitet",
+    "description": "Detaillierte Beschreibung für den Alle-Links-Modus"
+  },
+  "modeAltClickDescription": {
+    "message": "Nur Links, die bei gedrückter Alt-Taste geklickt werden, werden von Proxly erfasst",
+    "description": "Detaillierte Beschreibung für den Alt+Klick-Modus"
+  },
+  "feedbackTitle": {
+    "message": "Benutzer-Feedback",
+    "description": "Titel für den Feedback-Einstellungsbereich"
+  },
+  "feedbackDescription": {
+    "message": "Konfiguriere visuelles und akustisches Feedback wenn Links erfasst werden",
+    "description": "Beschreibung für den Feedback-Einstellungsbereich"
+  },
+  "enableVisualFeedback": {
+    "message": "Visuelles Feedback anzeigen",
+    "description": "Option zum Aktivieren von visuellem Feedback"
+  },
+  "visualFeedbackDescription": {
+    "message": "Zeige eine kurze visuelle Anzeige wenn Links erfasst werden",
+    "description": "Beschreibung für die visuelle Feedback-Option"
+  },
+  "enableSoundFeedback": {
+    "message": "Ton-Feedback abspielen",
+    "description": "Option zum Aktivieren von Ton-Feedback"
+  },
+  "soundFeedbackDescription": {
+    "message": "Spiele einen subtilen Ton ab wenn Links erfasst werden",
+    "description": "Beschreibung für die Ton-Feedback-Option"
+  },
+  "installationTitle": {
+    "message": "Installationsstatus",
+    "description": "Titel für den Installationsstatus-Bereich"
+  },
+  "extensionInstalled": {
+    "message": "Browser-Erweiterung installiert und aktiv",
+    "description": "Statusmeldung die anzeigt dass die Erweiterung installiert ist"
+  },
+  "checkingProxlyApp": {
+    "message": "Überprüfe Proxly-App-Status...",
+    "description": "Statusmeldung während der Überprüfung der Proxly-App"
+  },
+  "proxlyAppRunning": {
+    "message": "Proxly-App läuft",
+    "description": "Statusmeldung wenn die Proxly-App läuft"
+  },
+  "proxlyAppNotRunning": {
+    "message": "Proxly-App läuft nicht oder antwortet nicht",
+    "description": "Statusmeldung wenn die Proxly-App nicht läuft"
+  },
+  "requirementsTitle": {
+    "message": "Anforderungen",
+    "description": "Titel für den Anforderungsbereich"
+  },
+  "requirementProxlyApp": {
+    "message": "Proxly-App muss auf deinem Mac installiert und ausgeführt werden",
+    "description": "Anforderung für die Proxly-App"
+  },
+  "requirementPermissions": {
+    "message": "Erweiterung benötigt Berechtigung zum Zugriff auf alle Websites",
+    "description": "Anforderung für Berechtigungen"
+  },
+  "requirementContextMenu": {
+    "message": "Verwende das Rechtsklick-Kontextmenü oder Alt+Klick um Links zu erfassen",
+    "description": "Anforderung für Nutzungsanweisungen"
+  },
+  "saveSettings": {
+    "message": "Einstellungen speichern",
+    "description": "Einstellungen speichern Button-Text"
+  },
+  "resetSettings": {
+    "message": "Auf Standardwerte zurücksetzen",
+    "description": "Einstellungen zurücksetzen Button-Text"
+  },
+  "testConnection": {
+    "message": "Verbindung testen",
+    "description": "Verbindung testen Button-Text"
+  },
+  "extensionVersion": {
+    "message": "Erweiterungsversion",
+    "description": "Erweiterungsversion Label"
+  },
+  "helpAndSupport": {
+    "message": "Hilfe & Support",
+    "description": "Hilfe und Support Link-Text"
+  },
+  "privacyPolicy": {
+    "message": "Datenschutzrichtlinie",
+    "description": "Datenschutzrichtlinie Link-Text"
+  },
+  "accessibilitySettingsForm": {
+    "message": "Erweiterungs-Einstellungsformular",
+    "description": "Barrierefreiheits-Label für das Einstellungsformular"
+  },
+  "accessibilityModeToggle": {
+    "message": "Link-Behandlungsmodus-Umschaltung",
+    "description": "Barrierefreiheits-Label für Modus-Umschalt-Kontrolle"
+  },
+  "accessibilityModeHint": {
+    "message": "Wechsel zwischen dem Erfassen aller Links oder nur Alt+geklickter Links",
+    "description": "Barrierefreiheits-Hinweis für Modus-Umschalt-Kontrolle"
+  },
+  "accessibilityLinkCapture": {
+    "message": "Link wird mit Proxly geöffnet",
+    "description": "Barrierefreiheits-Ansage wenn Link erfasst wird"
+  },
+  "notificationCaptured": {
+    "message": "Link von Proxly erfasst",
+    "description": "Benachrichtigungstext wenn Link erfolgreich erfasst wurde"
+  },
+  "errorInvalidUrl": {
+    "message": "Ungültige URL erkannt",
+    "description": "Fehlermeldung für ungültige URLs"
+  },
+  "errorProxlyNotRunning": {
+    "message": "Proxly-App läuft nicht",
+    "description": "Fehlermeldung wenn Proxly-App nicht verfügbar ist"
+  },
+  "savingSettings": {
+    "message": "Speichere Einstellungen...",
+    "description": "Statusmeldung während des Speicherns der Einstellungen"
+  },
+  "settingsSaved": {
+    "message": "Einstellungen erfolgreich gespeichert",
+    "description": "Erfolgsmeldung für gespeicherte Einstellungen"
+  },
+  "settingsSavedAnnouncement": {
+    "message": "Einstellungen wurden erfolgreich gespeichert",
+    "description": "Screenreader-Ansage für gespeicherte Einstellungen"
+  },
+  "settingsSaveError": {
+    "message": "Fehler beim Speichern der Einstellungen",
+    "description": "Fehlermeldung für fehlgeschlagenes Speichern der Einstellungen"
+  },
+  "settingsSaveErrorAnnouncement": {
+    "message": "Fehler beim Speichern der Einstellungen",
+    "description": "Screenreader-Ansage für Einstellungs-Speicher-Fehler"
+  },
+  "resetConfirmation": {
+    "message": "Bist du sicher, dass du alle Einstellungen auf ihre Standardwerte zurücksetzen möchtest?",
+    "description": "Bestätigungsmeldung für das Zurücksetzen der Einstellungen"
+  },
+  "resettingSettings": {
+    "message": "Setze auf Standardwerte zurück...",
+    "description": "Statusmeldung während des Zurücksetzens der Einstellungen"
+  },
+  "settingsReset": {
+    "message": "Einstellungen auf Standardwerte zurückgesetzt",
+    "description": "Erfolgsmeldung für zurückgesetzte Einstellungen"
+  },
+  "settingsResetAnnouncement": {
+    "message": "Einstellungen wurden auf Standardwerte zurückgesetzt",
+    "description": "Screenreader-Ansage für zurückgesetzte Einstellungen"
+  },
+  "settingsResetError": {
+    "message": "Fehler beim Zurücksetzen der Einstellungen",
+    "description": "Fehlermeldung für fehlgeschlagenes Zurücksetzen der Einstellungen"
+  },
+  "testingConnection": {
+    "message": "Teste Verbindung zu Proxly...",
+    "description": "Statusmeldung während des Verbindungstests"
+  },
+  "connectionSuccess": {
+    "message": "Verbindungstest erfolgreich",
+    "description": "Erfolgsmeldung für Verbindungstest"
+  },
+  "connectionTestError": {
+    "message": "Verbindungstest fehlgeschlagen",
+    "description": "Fehlermeldung für fehlgeschlagenen Verbindungstest"
+  },
+  "visualFeedbackEnabled": {
+    "message": "Visuelles Feedback aktiviert",
+    "description": "Ansage wenn visuelles Feedback aktiviert wird"
+  },
+  "visualFeedbackDisabled": {
+    "message": "Visuelles Feedback deaktiviert",
+    "description": "Ansage wenn visuelles Feedback deaktiviert wird"
+  },
+  "soundFeedbackEnabled": {
+    "message": "Ton-Feedback aktiviert",
+    "description": "Ansage wenn Ton-Feedback aktiviert wird"
+  },
+  "soundFeedbackDisabled": {
+    "message": "Ton-Feedback deaktiviert",
+    "description": "Ansage wenn Ton-Feedback deaktiviert wird"
+  },
+  "modeChanged": {
+    "message": "Link-Behandlungsmodus geändert: $1",
+    "description": "Ansage wenn Link-Behandlungsmodus geändert wird",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "Nur Links, die bei gedrückter Alt-Taste geklickt werden, werden erfasst"
+      }
+    }
+  }
+}

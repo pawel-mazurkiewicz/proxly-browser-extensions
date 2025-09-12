@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="popupTitle">Proxly</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <img src="icons/icon-48.png" alt="Proxly" class="logo">
+      <h1 data-i18n="extensionName">Proxly</h1>
+    </header>
+
+    <div class="toggle-section">
+      <div class="toggle-label">
+        <span data-i18n="extensionStatus">Extension Status</span>
+        <span class="status-text" id="status-text" data-i18n="statusEnabled">Enabled</span>
+      </div>
+      
+      <label class="toggle-switch" aria-label="Toggle Proxly extension on/off">
+        <input type="checkbox" id="main-toggle" aria-describedby="toggle-description">
+        <span class="slider"></span>
+      </label>
+      
+      <p id="toggle-description" class="toggle-description">
+        <span data-i18n="toggleDescription">When enabled, external links will be routed through Proxly</span>
+      </p>
+    </div>
+
+    <div class="mode-section">
+      <h3 data-i18n="linkHandlingMode">Link Handling</h3>
+      
+      <div class="mode-options" role="radiogroup" aria-labelledby="mode-group-label">
+        <div id="mode-group-label" class="sr-only" data-i18n="linkHandlingMode">Link Handling</div>
+        
+        <label class="mode-option">
+          <input type="radio" 
+                 name="linkMode" 
+                 value="all" 
+                 id="mode-all"
+                 aria-describedby="mode-all-desc">
+          <span class="radio-custom"></span>
+          <span class="option-text" data-i18n="modeAllLinks">Capture all external links</span>
+        </label>
+        <p id="mode-all-desc" class="mode-description">
+          <span data-i18n="modeAllLinksDescription">All external links automatically routed through Proxly</span>
+        </p>
+        
+        <label class="mode-option">
+          <input type="radio" 
+                 name="linkMode" 
+                 value="context" 
+                 id="mode-context"
+                 aria-describedby="mode-context-desc">
+          <span class="radio-custom"></span>
+          <span class="option-text" data-i18n="modeContextOnly">Right-click menu only</span>
+        </label>
+        <p id="mode-context-desc" class="mode-description">
+          <span data-i18n="modeContextOnlyDescription">Use right-click "Open with Proxly" to capture links</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <button type="button" class="action-button" id="open-options">
+        <span data-i18n="openSettings">Settings</span>
+      </button>
+      
+      <button type="button" class="action-button" id="test-connection">
+        <span data-i18n="testConnection">Test Connection</span>
+      </button>
+    </div>
+
+    <div class="status-indicator" id="connection-status">
+      <span class="status-icon" id="connection-icon">⏳</span>
+      <span class="status-message" id="connection-message" data-i18n="checkingConnection">Checking connection...</span>
+    </div>
+  </div>
+
+  <!-- Screen reader announcements -->
+  <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="shared/constants.js"></script>
+  <script src="shared/localization.js"></script>
+  <script src="shared/accessibility.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "manifest_version": 2,
+  "name": "Proxly Browser Extension",
+  "description": "Route web links through Proxly for intelligent browser selection",
+  "version": "1.0.0",
+  "default_locale": "en",
+  
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png",
+    "256": "icons/icon-256.png"
+  },
+  
+  "background": {
+    "scripts": [
+      "shared/constants.js",
+      "shared/localization.js",
+      "shared/settings-manager.js",
+      "background.js"
+    ],
+    "persistent": false
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "shared/constants.js",
+        "shared/localization.js", 
+        "shared/accessibility.js",
+        "shared/settings-manager.js",
+        "content-script.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "<all_urls>"
+  ],
+  
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true,
+    "chrome_style": false
+  },
+  
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "proxly-extension@proxly.app",
+      "strict_min_version": "79.0"
+    }
+  }
+}

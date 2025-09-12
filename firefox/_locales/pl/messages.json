@@ -1,0 +1,240 @@
+{
+  "extensionName": {
+    "message": "Rozszerzenie Przeglądarki Proxly",
+    "description": "Nazwa rozszerzenia przeglądarki"
+  },
+  "extensionDescription": {
+    "message": "Przekierowuj linki internetowe przez Proxly dla inteligentnego wyboru przeglądarki",
+    "description": "Opis funkcjonalności rozszerzenia przeglądarki"
+  },
+  "contextMenuTitle": {
+    "message": "Otwórz za pomocą Proxly",
+    "description": "Tekst menu kontekstowego do otwierania linków za pomocą Proxly"
+  },
+  "contextMenuTitleAll": {
+    "message": "Otwórz za pomocą Proxly (tryb wszystkich linków aktywny)",
+    "description": "Tekst menu kontekstowego w trybie wszystkich linków"
+  },
+  "settingsTitle": {
+    "message": "Ustawienia Rozszerzenia Proxly",
+    "description": "Tytuł strony ustawień rozszerzenia"
+  },
+  "settingsSubtitle": {
+    "message": "Skonfiguruj jak rozszerzenie obsługuje linki internetowe",
+    "description": "Podtytuł strony ustawień rozszerzenia"
+  },
+  "settingsModeTitle": {
+    "message": "Tryb Obsługi Linków",
+    "description": "Tytuł ustawienia trybu obsługi linków"
+  },
+  "modeAllLinks": {
+    "message": "Przechwytuj wszystkie linki zewnętrzne",
+    "description": "Opcja przechwytywania wszystkich linków zewnętrznych"
+  },
+  "modeAltClick": {
+    "message": "Tylko Alt+klik",
+    "description": "Opcja przechwytywania tylko linków z Alt+klik"
+  },
+  "modeDescription": {
+    "message": "Wybierz jak rozszerzenie obsługuje kliknięcia w linki",
+    "description": "Opis ustawienia wyboru trybu"
+  },
+  "modeAllLinksDescription": {
+    "message": "Wszystkie linki zewnętrzne (linki do innych stron internetowych) będą automatycznie przekierowywane przez Proxly",
+    "description": "Szczegółowy opis trybu wszystkich linków"
+  },
+  "modeAltClickDescription": {
+    "message": "Tylko linki kliknięte przy przytrzymanej klawiszu Alt będą przechwytywane przez Proxly",
+    "description": "Szczegółowy opis trybu Alt+klik"
+  },
+  "feedbackTitle": {
+    "message": "Informacje Zwrotne dla Użytkownika",
+    "description": "Tytuł sekcji ustawień informacji zwrotnych"
+  },
+  "feedbackDescription": {
+    "message": "Skonfiguruj wizualne i dźwiękowe informacje zwrotne gdy linki są przechwytywane",
+    "description": "Opis sekcji ustawień informacji zwrotnych"
+  },
+  "enableVisualFeedback": {
+    "message": "Pokaż wizualne informacje zwrotne",
+    "description": "Opcja włączenia wizualnych informacji zwrotnych"
+  },
+  "visualFeedbackDescription": {
+    "message": "Wyświetl krótki wizualny wskaźnik gdy linki są przechwytywane",
+    "description": "Opis opcji wizualnych informacji zwrotnych"
+  },
+  "enableSoundFeedback": {
+    "message": "Odtwórz dźwiękowe informacje zwrotne",
+    "description": "Opcja włączenia dźwiękowych informacji zwrotnych"
+  },
+  "soundFeedbackDescription": {
+    "message": "Odtwórz subtelny dźwięk gdy linki są przechwytywane",
+    "description": "Opis opcji dźwiękowych informacji zwrotnych"
+  },
+  "installationTitle": {
+    "message": "Status Instalacji",
+    "description": "Tytuł sekcji statusu instalacji"
+  },
+  "extensionInstalled": {
+    "message": "Rozszerzenie przeglądarki zainstalowane i aktywne",
+    "description": "Komunikat statusu wskazujący że rozszerzenie jest zainstalowane"
+  },
+  "checkingProxlyApp": {
+    "message": "Sprawdzanie statusu aplikacji Proxly...",
+    "description": "Komunikat statusu podczas sprawdzania aplikacji Proxly"
+  },
+  "proxlyAppRunning": {
+    "message": "Aplikacja Proxly działa",
+    "description": "Komunikat statusu gdy aplikacja Proxly działa"
+  },
+  "proxlyAppNotRunning": {
+    "message": "Aplikacja Proxly nie działa lub nie odpowiada",
+    "description": "Komunikat statusu gdy aplikacja Proxly nie działa"
+  },
+  "requirementsTitle": {
+    "message": "Wymagania",
+    "description": "Tytuł sekcji wymagań"
+  },
+  "requirementProxlyApp": {
+    "message": "Aplikacja Proxly musi być zainstalowana i uruchomiona na twoim Mac",
+    "description": "Wymaganie dla aplikacji Proxly"
+  },
+  "requirementPermissions": {
+    "message": "Rozszerzenie wymaga uprawnień dostępu do wszystkich stron internetowych",
+    "description": "Wymaganie dla uprawnień"
+  },
+  "requirementContextMenu": {
+    "message": "Użyj menu kontekstowego prawego kliku lub Alt+klik aby przechwytywać linki",
+    "description": "Wymaganie dla instrukcji użytkowania"
+  },
+  "saveSettings": {
+    "message": "Zapisz Ustawienia",
+    "description": "Tekst przycisku zapisu ustawień"
+  },
+  "resetSettings": {
+    "message": "Resetuj do Wartości Domyślnych",
+    "description": "Tekst przycisku resetowania ustawień"
+  },
+  "testConnection": {
+    "message": "Testuj Połączenie",
+    "description": "Tekst przycisku testowania połączenia"
+  },
+  "extensionVersion": {
+    "message": "Wersja Rozszerzenia",
+    "description": "Etykieta wersji rozszerzenia"
+  },
+  "helpAndSupport": {
+    "message": "Pomoc i Wsparcie",
+    "description": "Tekst linku pomocy i wsparcia"
+  },
+  "privacyPolicy": {
+    "message": "Polityka Prywatności",
+    "description": "Tekst linku polityki prywatności"
+  },
+  "accessibilitySettingsForm": {
+    "message": "Formularz ustawień rozszerzenia",
+    "description": "Etykieta dostępności dla formularza ustawień"
+  },
+  "accessibilityModeToggle": {
+    "message": "Przełącznik trybu obsługi linków",
+    "description": "Etykieta dostępności dla kontrolki przełącznika trybu"
+  },
+  "accessibilityModeHint": {
+    "message": "Przełącz między przechwytywaniem wszystkich linków a tylko linków Alt+klik",
+    "description": "Podpowiedź dostępności dla kontrolki przełącznika trybu"
+  },
+  "accessibilityLinkCapture": {
+    "message": "Link zostanie otwarty za pomocą Proxly",
+    "description": "Ogłoszenie dostępności gdy link jest przechwytywany"
+  },
+  "notificationCaptured": {
+    "message": "Link przechwycony przez Proxly",
+    "description": "Tekst powiadomienia gdy link jest pomyślnie przechwycony"
+  },
+  "errorInvalidUrl": {
+    "message": "Wykryto nieprawidłowy URL",
+    "description": "Komunikat błędu dla nieprawidłowych URL"
+  },
+  "errorProxlyNotRunning": {
+    "message": "Aplikacja Proxly nie działa",
+    "description": "Komunikat błędu gdy aplikacja Proxly nie jest dostępna"
+  },
+  "savingSettings": {
+    "message": "Zapisywanie ustawień...",
+    "description": "Komunikat statusu podczas zapisywania ustawień"
+  },
+  "settingsSaved": {
+    "message": "Ustawienia zapisane pomyślnie",
+    "description": "Komunikat sukcesu dla zapisanych ustawień"
+  },
+  "settingsSavedAnnouncement": {
+    "message": "Ustawienia zostały zapisane pomyślnie",
+    "description": "Ogłoszenie czytnika ekranu dla zapisanych ustawień"
+  },
+  "settingsSaveError": {
+    "message": "Niepowodzenie zapisu ustawień",
+    "description": "Komunikat błędu dla niepowodzenia zapisu ustawień"
+  },
+  "settingsSaveErrorAnnouncement": {
+    "message": "Niepowodzenie zapisu ustawień",
+    "description": "Ogłoszenie czytnika ekranu dla błędu zapisu ustawień"
+  },
+  "resetConfirmation": {
+    "message": "Czy jesteś pewien, że chcesz zresetować wszystkie ustawienia do ich wartości domyślnych?",
+    "description": "Komunikat potwierdzenia dla resetowania ustawień"
+  },
+  "resettingSettings": {
+    "message": "Resetowanie do wartości domyślnych...",
+    "description": "Komunikat statusu podczas resetowania ustawień"
+  },
+  "settingsReset": {
+    "message": "Ustawienia zresetowane do wartości domyślnych",
+    "description": "Komunikat sukcesu dla zresetowanych ustawień"
+  },
+  "settingsResetAnnouncement": {
+    "message": "Ustawienia zostały zresetowane do wartości domyślnych",
+    "description": "Ogłoszenie czytnika ekranu dla zresetowanych ustawień"
+  },
+  "settingsResetError": {
+    "message": "Niepowodzenie resetowania ustawień",
+    "description": "Komunikat błędu dla niepowodzenia resetowania ustawień"
+  },
+  "testingConnection": {
+    "message": "Testowanie połączenia z Proxly...",
+    "description": "Komunikat statusu podczas testowania połączenia"
+  },
+  "connectionSuccess": {
+    "message": "Test połączenia pomyślny",
+    "description": "Komunikat sukcesu dla testu połączenia"
+  },
+  "connectionTestError": {
+    "message": "Test połączenia nieudany",
+    "description": "Komunikat błędu dla nieudanego testu połączenia"
+  },
+  "visualFeedbackEnabled": {
+    "message": "Wizualne informacje zwrotne włączone",
+    "description": "Ogłoszenie gdy wizualne informacje zwrotne są włączane"
+  },
+  "visualFeedbackDisabled": {
+    "message": "Wizualne informacje zwrotne wyłączone",
+    "description": "Ogłoszenie gdy wizualne informacje zwrotne są wyłączane"
+  },
+  "soundFeedbackEnabled": {
+    "message": "Dźwiękowe informacje zwrotne włączone",
+    "description": "Ogłoszenie gdy dźwiękowe informacje zwrotne są włączane"
+  },
+  "soundFeedbackDisabled": {
+    "message": "Dźwiękowe informacje zwrotne wyłączone",
+    "description": "Ogłoszenie gdy dźwiękowe informacje zwrotne są wyłączane"
+  },
+  "modeChanged": {
+    "message": "Tryb obsługi linków zmieniony: $1",
+    "description": "Ogłoszenie gdy tryb obsługi linków jest zmieniany",
+    "placeholders": {
+      "1": {
+        "content": "$1",
+        "example": "Tylko linki kliknięte przy przytrzymanej klawiszu Alt będą przechwytywane"
+      }
+    }
+  }
+}

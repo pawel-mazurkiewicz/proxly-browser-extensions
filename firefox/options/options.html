@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="settingsTitle">Proxly Extension Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="settings-container" role="main">
+    <header class="settings-header">
+      <img src="../icons/icon-48.png" alt="Proxly" class="logo">
+      <h1 data-i18n="settingsTitle">Proxly Extension Settings</h1>
+      <p class="settings-subtitle" data-i18n="settingsSubtitle">Configure how the extension handles web links</p>
+    </header>
+
+    <form id="settings-form" 
+          class="settings-form" 
+          role="form"
+          aria-label="" 
+          data-i18n-attr="aria-label:accessibilitySettingsForm">
+      
+      <section class="setting-section" role="group">
+        <h2 data-i18n="settingsModeTitle">Link Handling Mode</h2>
+        <p class="setting-description" data-i18n="modeDescription">
+          Choose how the extension handles link clicks
+        </p>
+        
+        <div class="mode-selection" role="radiogroup" aria-labelledby="mode-group-label">
+          <div id="mode-group-label" class="sr-only" data-i18n="settingsModeTitle">Link Handling Mode</div>
+          
+          <label class="mode-option">
+            <input type="radio" 
+                   name="linkMode" 
+                   value="context" 
+                   id="mode-context"
+                   aria-describedby="mode-context-desc">
+            <span class="radio-custom" aria-hidden="true"></span>
+            <span class="option-text" data-i18n="modeContextOnly">Right-click menu only</span>
+          </label>
+          <p id="mode-context-desc" class="option-description">
+            <span data-i18n="modeContextOnlyDescription">Use right-click "Open with Proxly" to capture links</span>
+          </p>
+          
+          <label class="mode-option">
+            <input type="radio" 
+                   name="linkMode" 
+                   value="all" 
+                   id="mode-all"
+                   aria-describedby="mode-all-desc">
+            <span class="radio-custom" aria-hidden="true"></span>
+            <span class="option-text" data-i18n="modeAllLinks">Capture all external links</span>
+          </label>
+          <p id="mode-all-desc" class="option-description">
+            <span data-i18n="modeAllLinksDescription">All external links (links to other websites) will be routed through Proxly automatically</span>
+          </p>
+        </div>
+      </section>
+
+
+      <section class="setting-section" role="group">
+        <h2 data-i18n="feedbackTitle">User Feedback</h2>
+        <p class="setting-description" data-i18n="feedbackDescription">
+          Configure visual and audio feedback when links are captured
+        </p>
+        
+        <div class="feedback-options">
+          <label class="checkbox-option">
+            <input type="checkbox" 
+                   id="visual-feedback" 
+                   aria-describedby="visual-feedback-desc">
+            <span class="checkbox-custom" aria-hidden="true"></span>
+            <span class="option-text" data-i18n="enableVisualFeedback">Show visual feedback</span>
+          </label>
+          <p id="visual-feedback-desc" class="option-description">
+            <span data-i18n="visualFeedbackDescription">Display a brief visual indicator when links are captured</span>
+          </p>
+          
+          <label class="checkbox-option">
+            <input type="checkbox" 
+                   id="sound-feedback" 
+                   aria-describedby="sound-feedback-desc">
+            <span class="checkbox-custom" aria-hidden="true"></span>
+            <span class="option-text" data-i18n="enableSoundFeedback">Play sound feedback</span>
+          </label>
+          <p id="sound-feedback-desc" class="option-description">
+            <span data-i18n="soundFeedbackDescription">Play a subtle sound when links are captured</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="setting-section info-section" role="group">
+        <h2 data-i18n="installationTitle">Installation Status</h2>
+        <div class="installation-status">
+          <div class="status-item">
+            <span class="status-icon" id="extension-status-icon">✅</span>
+            <span data-i18n="extensionInstalled">Browser extension installed and active</span>
+          </div>
+          <div class="status-item" id="proxly-app-status">
+            <span class="status-icon" id="app-status-icon">⏳</span>
+            <span id="app-status-text" data-i18n="checkingProxlyApp">Checking Proxly app status...</span>
+          </div>
+        </div>
+        
+        <div class="info-box">
+          <h3 data-i18n="requirementsTitle">Requirements</h3>
+          <ul>
+            <li data-i18n="requirementProxlyApp">Proxly app must be installed and running on your Mac</li>
+            <li data-i18n="requirementPermissions">Extension requires permission to access all websites</li>
+            <li data-i18n="requirementContextMenu">Use right-click context menu or enable "capture all" mode</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button type="submit" class="save-button" data-i18n="saveSettings">
+          Save Settings
+        </button>
+        <button type="button" class="reset-button" data-i18n="resetSettings">
+          Reset to Defaults
+        </button>
+        <button type="button" class="test-button" data-i18n="testConnection">
+          Test Connection
+        </button>
+      </div>
+    </form>
+
+    <div id="save-status" class="save-status" role="status" aria-live="polite">
+      <!-- Status messages will be inserted here -->
+    </div>
+    
+    <footer class="settings-footer">
+      <p class="version-info">
+        <span data-i18n="extensionVersion">Extension Version</span>: <span id="extension-version">1.0.0</span>
+      </p>
+      <p class="help-links">
+        <a href="#" id="help-link" data-i18n="helpAndSupport">Help & Support</a> |
+        <a href="#" id="privacy-link" data-i18n="privacyPolicy">Privacy Policy</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Screen reader announcements -->
+  <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="../shared/constants.js"></script>
+  <script src="../shared/localization.js"></script>
+  <script src="../shared/accessibility.js"></script>
+  <script src="../shared/settings-manager.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
