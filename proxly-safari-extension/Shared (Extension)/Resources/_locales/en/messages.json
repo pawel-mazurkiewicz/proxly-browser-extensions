@@ -1,0 +1,186 @@
+{
+    "extension_name": {
+        "message": "Proxly Browser Extension",
+        "description": "The display name for the extension."
+    },
+    "extension_description": {
+        "message": "Route web links through Proxly for intelligent browser selection",
+        "description": "Description of what the extension does."
+    },
+    "popupTitle": {
+        "message": "Proxly",
+        "description": "Title of the extension popup"
+    },
+    "extensionStatus": {
+        "message": "Extension Status",
+        "description": "Label for extension status section"
+    },
+    "statusEnabled": {
+        "message": "Enabled",
+        "description": "Status text when extension is enabled"
+    },
+    "statusDisabled": {
+        "message": "Disabled",
+        "description": "Status text when extension is disabled"
+    },
+    "toggleDescription": {
+        "message": "When enabled, external links will be routed through Proxly",
+        "description": "Description of the toggle functionality"
+    },
+    "linkHandlingMode": {
+        "message": "Link Handling",
+        "description": "Section header for link handling options"
+    },
+    "modeAllLinks": {
+        "message": "Capture all external links",
+        "description": "Option for capturing all external links"
+    },
+    "modeAllLinksDescription": {
+        "message": "All external links automatically routed through Proxly",
+        "description": "Description for all links mode"
+    },
+    "modeContextOnly": {
+        "message": "Right-click menu only",
+        "description": "Option for context menu only mode"
+    },
+    "modeContextOnlyDescription": {
+        "message": "Use right-click \"Open with Proxly\" to capture links",
+        "description": "Description for context menu only mode"
+    },
+    "openSettings": {
+        "message": "Settings",
+        "description": "Button text for opening settings"
+    },
+    "testConnection": {
+        "message": "Test Connection",
+        "description": "Button text for testing connection"
+    },
+    "checkingConnection": {
+        "message": "Checking connection...",
+        "description": "Status message when checking connection"
+    },
+    "contextMenuTitle": {
+        "message": "Open with Proxly",
+        "description": "Context menu item title"
+    },
+    "contextMenuTitleAll": {
+        "message": "Open with Proxly (all links mode active)",
+        "description": "Context menu item title when in all links mode"
+    },
+    "extensionEnabled": {
+        "message": "Proxly extension enabled",
+        "description": "Announcement when extension is enabled"
+    },
+    "extensionDisabled": {
+        "message": "Proxly extension disabled",
+        "description": "Announcement when extension is disabled"
+    },
+    "modeChangedTo": {
+        "message": "Link handling changed to:",
+        "description": "Announcement when mode is changed"
+    },
+    "accessibilityLinkCapture": {
+        "message": "Link will be opened with Proxly",
+        "description": "Accessibility announcement when link is captured"
+    },
+    "errorInvalidUrl": {
+        "message": "Invalid URL detected",
+        "description": "Error message for invalid URLs"
+    },
+    "errorProxlyNotRunning": {
+        "message": "Proxly is not running or not responding",
+        "description": "Error message when Proxly is not available"
+    },
+    "settingsTitle": {
+        "message": "Proxly Extension Settings",
+        "description": "Title for the settings/options page"
+    },
+    "settingsSubtitle": {
+        "message": "Configure how the extension handles web links",
+        "description": "Subtitle for the settings page"
+    },
+    "settingsModeTitle": {
+        "message": "Link Handling Mode",
+        "description": "Section title for mode settings"
+    },
+    "modeDescription": {
+        "message": "Choose how the extension handles link clicks",
+        "description": "Description for mode settings"
+    },
+    "feedbackTitle": {
+        "message": "User Feedback",
+        "description": "Section title for feedback settings"
+    },
+    "feedbackDescription": {
+        "message": "Configure visual and audio feedback when links are captured",
+        "description": "Description for feedback settings"
+    },
+    "enableVisualFeedback": {
+        "message": "Show visual feedback",
+        "description": "Option to enable visual feedback"
+    },
+    "visualFeedbackDescription": {
+        "message": "Display a brief visual indicator when links are captured",
+        "description": "Description for visual feedback option"
+    },
+    "enableSoundFeedback": {
+        "message": "Play sound feedback",
+        "description": "Option to enable sound feedback"
+    },
+    "soundFeedbackDescription": {
+        "message": "Play a subtle sound when links are captured",
+        "description": "Description for sound feedback option"
+    },
+    "installationTitle": {
+        "message": "Installation Status",
+        "description": "Section title for installation status"
+    },
+    "extensionInstalled": {
+        "message": "Browser extension installed and active",
+        "description": "Status message for extension installation"
+    },
+    "checkingProxlyApp": {
+        "message": "Checking Proxly app status...",
+        "description": "Status message while checking Proxly app"
+    },
+    "requirementsTitle": {
+        "message": "Requirements",
+        "description": "Title for requirements section"
+    },
+    "requirementProxlyApp": {
+        "message": "Proxly app must be installed and running on your Mac",
+        "description": "Requirement for Proxly app"
+    },
+    "requirementPermissions": {
+        "message": "Extension requires permission to access all websites",
+        "description": "Requirement for permissions"
+    },
+    "requirementContextMenu": {
+        "message": "Use right-click context menu or enable \"capture all\" mode",
+        "description": "Requirement for context menu usage"
+    },
+    "saveSettings": {
+        "message": "Save Settings",
+        "description": "Button text for saving settings"
+    },
+    "resetSettings": {
+        "message": "Reset to Defaults",
+        "description": "Button text for resetting settings"
+    },
+    "extensionVersion": {
+        "message": "Extension Version",
+        "description": "Label for extension version"
+    },
+    "helpAndSupport": {
+        "message": "Help & Support",
+        "description": "Link text for help and support"
+    },
+    "privacyPolicy": {
+        "message": "Privacy Policy",
+        "description": "Link text for privacy policy"
+    },
+    "accessibilitySettingsForm": {
+        "message": "Proxly extension settings configuration form",
+        "description": "Accessibility label for settings form"
+    }
+}

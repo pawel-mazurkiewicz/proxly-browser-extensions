@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD8AD1322E7437F7006BB056 /* proxly-safari-extension Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FD8AD1312E7437F7006BB056 /* proxly-safari-extension Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FDEB9CCC2E7617EC00EA4E6A /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC22E7617EB00EA4E6A /* background.js */; };
+		FDEB9CCD2E7617EC00EA4E6A /* images in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC32E7617EB00EA4E6A /* images */; };
+		FDEB9CCE2E7617EC00EA4E6A /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC42E7617EB00EA4E6A /* popup.html */; };
+		FDEB9CCF2E7617EC00EA4E6A /* options in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC52E7617EB00EA4E6A /* options */; };
+		FDEB9CD02E7617EC00EA4E6A /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC62E7617EB00EA4E6A /* popup.js */; };
+		FDEB9CD12E7617EC00EA4E6A /* shared in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC72E7617EB00EA4E6A /* shared */; };
+		FDEB9CD22E7617EC00EA4E6A /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC82E7617EB00EA4E6A /* content.js */; };
+		FDEB9CD32E7617EC00EA4E6A /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CC92E7617EB00EA4E6A /* popup.css */; };
+		FDEB9CD42E7617EC00EA4E6A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CCA2E7617EB00EA4E6A /* manifest.json */; };
+		FDEB9CD52E7617EC00EA4E6A /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = FDEB9CCB2E7617EB00EA4E6A /* _locales */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FD8AD1332E7437F7006BB056 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD8AD0ED2E7437F5006BB056 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD8AD1302E7437F7006BB056;
+			remoteInfo = "proxly-safari-extension Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FD8AD1652E7437F7006BB056 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FD8AD1322E7437F7006BB056 /* proxly-safari-extension Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FD8AD11B2E7437F7006BB056 /* proxly-safari-extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "proxly-safari-extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD8AD1312E7437F7006BB056 /* proxly-safari-extension Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "proxly-safari-extension Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDEB9CC22E7617EB00EA4E6A /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = "Shared (Extension)/Resources/background.js"; sourceTree = "<group>"; };
+		FDEB9CC32E7617EB00EA4E6A /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = "Shared (Extension)/Resources/images"; sourceTree = "<group>"; };
+		FDEB9CC42E7617EB00EA4E6A /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = "Shared (Extension)/Resources/popup.html"; sourceTree = "<group>"; };
+		FDEB9CC52E7617EB00EA4E6A /* options */ = {isa = PBXFileReference; lastKnownFileType = folder; name = options; path = "Shared (Extension)/Resources/options"; sourceTree = "<group>"; };
+		FDEB9CC62E7617EB00EA4E6A /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.js; path = "Shared (Extension)/Resources/popup.js"; sourceTree = "<group>"; };
+		FDEB9CC72E7617EB00EA4E6A /* shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shared; path = "Shared (Extension)/Resources/shared"; sourceTree = "<group>"; };
+		FDEB9CC82E7617EB00EA4E6A /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = "Shared (Extension)/Resources/content.js"; sourceTree = "<group>"; };
+		FDEB9CC92E7617EB00EA4E6A /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = popup.css; path = "Shared (Extension)/Resources/popup.css"; sourceTree = "<group>"; };
+		FDEB9CCA2E7617EB00EA4E6A /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = "Shared (Extension)/Resources/manifest.json"; sourceTree = "<group>"; };
+		FDEB9CCB2E7617EB00EA4E6A /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _locales; path = "Shared (Extension)/Resources/_locales"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FD8AD1602E7437F7006BB056 /* Exceptions for "Shared (App)" folder in "proxly-safari-extension (macOS)" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: Resources/Main.html",
+				Assets.xcassets,
+				Resources/Icon.png,
+				Resources/Script.js,
+				Resources/Style.css,
+				ViewController.swift,
+			);
+			target = FD8AD11A2E7437F7006BB056 /* proxly-safari-extension (macOS) */;
+		};
+		FD8AD1642E7437F7006BB056 /* Exceptions for "macOS (Extension)" folder in "proxly-safari-extension Extension (macOS)" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FD8AD1302E7437F7006BB056 /* proxly-safari-extension Extension (macOS) */;
+		};
+		FD8AD16A2E7437F7006BB056 /* Exceptions for "Shared (Extension)" folder in "proxly-safari-extension Extension (macOS)" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SafariWebExtensionHandler.swift,
+			);
+			target = FD8AD1302E7437F7006BB056 /* proxly-safari-extension Extension (macOS) */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		FD8AD0F12E7437F5006BB056 /* Shared (App) */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FD8AD1602E7437F7006BB056 /* Exceptions for "Shared (App)" folder in "proxly-safari-extension (macOS)" target */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		FD8AD0FA2E7437F7006BB056 /* Shared (Extension) */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FD8AD16A2E7437F7006BB056 /* Exceptions for "Shared (Extension)" folder in "proxly-safari-extension Extension (macOS)" target */,
+			);
+			explicitFolders = (
+				Resources/_locales,
+				Resources/images,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		FD8AD11C2E7437F7006BB056 /* macOS (App) */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		FD8AD1352E7437F7006BB056 /* macOS (Extension) */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FD8AD1642E7437F7006BB056 /* Exceptions for "macOS (Extension)" folder in "proxly-safari-extension Extension (macOS)" target */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD8AD1182E7437F7006BB056 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD8AD12E2E7437F7006BB056 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD8AD0EC2E7437F5006BB056 = {
+			isa = PBXGroup;
+			children = (
+				FDEB9CCB2E7617EB00EA4E6A /* _locales */,
+				FDEB9CC22E7617EB00EA4E6A /* background.js */,
+				FDEB9CC82E7617EB00EA4E6A /* content.js */,
+				FDEB9CC32E7617EB00EA4E6A /* images */,
+				FDEB9CCA2E7617EB00EA4E6A /* manifest.json */,
+				FDEB9CC52E7617EB00EA4E6A /* options */,
+				FDEB9CC92E7617EB00EA4E6A /* popup.css */,
+				FDEB9CC42E7617EB00EA4E6A /* popup.html */,
+				FDEB9CC62E7617EB00EA4E6A /* popup.js */,
+				FDEB9CC72E7617EB00EA4E6A /* shared */,
+				FD8AD0F12E7437F5006BB056 /* Shared (App) */,
+				FD8AD0FA2E7437F7006BB056 /* Shared (Extension) */,
+				FD8AD11C2E7437F7006BB056 /* macOS (App) */,
+				FD8AD1352E7437F7006BB056 /* macOS (Extension) */,
+				FD8AD10A2E7437F7006BB056 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD8AD10A2E7437F7006BB056 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD8AD11B2E7437F7006BB056 /* proxly-safari-extension.app */,
+				FD8AD1312E7437F7006BB056 /* proxly-safari-extension Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD8AD11A2E7437F7006BB056 /* proxly-safari-extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD8AD1662E7437F7006BB056 /* Build configuration list for PBXNativeTarget "proxly-safari-extension (macOS)" */;
+			buildPhases = (
+				FD8AD1172E7437F7006BB056 /* Sources */,
+				FD8AD1182E7437F7006BB056 /* Frameworks */,
+				FD8AD1192E7437F7006BB056 /* Resources */,
+				FD8AD1652E7437F7006BB056 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FD8AD1342E7437F7006BB056 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FD8AD11C2E7437F7006BB056 /* macOS (App) */,
+			);
+			name = "proxly-safari-extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "proxly-safari-extension (macOS)";
+			productReference = FD8AD11B2E7437F7006BB056 /* proxly-safari-extension.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FD8AD1302E7437F7006BB056 /* proxly-safari-extension Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD8AD1612E7437F7006BB056 /* Build configuration list for PBXNativeTarget "proxly-safari-extension Extension (macOS)" */;
+			buildPhases = (
+				FD8AD12D2E7437F7006BB056 /* Sources */,
+				FD8AD12E2E7437F7006BB056 /* Frameworks */,
+				FD8AD12F2E7437F7006BB056 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FD8AD1352E7437F7006BB056 /* macOS (Extension) */,
+			);
+			name = "proxly-safari-extension Extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "proxly-safari-extension Extension (macOS)";
+			productReference = FD8AD1312E7437F7006BB056 /* proxly-safari-extension Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD8AD0ED2E7437F5006BB056 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					FD8AD11A2E7437F7006BB056 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					FD8AD1302E7437F7006BB056 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = FD8AD0F02E7437F5006BB056 /* Build configuration list for PBXProject "proxly-safari-extension" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FD8AD0EC2E7437F5006BB056;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FD8AD10A2E7437F7006BB056 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD8AD11A2E7437F7006BB056 /* proxly-safari-extension (macOS) */,
+				FD8AD1302E7437F7006BB056 /* proxly-safari-extension Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD8AD1192E7437F7006BB056 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD8AD12F2E7437F7006BB056 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDEB9CCC2E7617EC00EA4E6A /* background.js in Resources */,
+				FDEB9CCD2E7617EC00EA4E6A /* images in Resources */,
+				FDEB9CCE2E7617EC00EA4E6A /* popup.html in Resources */,
+				FDEB9CCF2E7617EC00EA4E6A /* options in Resources */,
+				FDEB9CD02E7617EC00EA4E6A /* popup.js in Resources */,
+				FDEB9CD12E7617EC00EA4E6A /* shared in Resources */,
+				FDEB9CD22E7617EC00EA4E6A /* content.js in Resources */,
+				FDEB9CD32E7617EC00EA4E6A /* popup.css in Resources */,
+				FDEB9CD42E7617EC00EA4E6A /* manifest.json in Resources */,
+				FDEB9CD52E7617EC00EA4E6A /* _locales in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD8AD1172E7437F7006BB056 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD8AD12D2E7437F7006BB056 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FD8AD1342E7437F7006BB056 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD8AD1302E7437F7006BB056 /* proxly-safari-extension Extension (macOS) */;
+			targetProxy = FD8AD1332E7437F7006BB056 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FD8AD1622E7437F7006BB056 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/proxly-safari-extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B32NBD6HCA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chillaid.art.proxly-safari-extension.Extension";
+				PRODUCT_NAME = "proxly-safari-extension Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FD8AD1632E7437F7006BB056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/proxly-safari-extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B32NBD6HCA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chillaid.art.proxly-safari-extension.Extension";
+				PRODUCT_NAME = "proxly-safari-extension Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FD8AD1672E7437F7006BB056 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/proxly-safari-extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B32NBD6HCA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chillaid.art.proxly-safari-extension";
+				PRODUCT_NAME = "proxly-safari-extension";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FD8AD1682E7437F7006BB056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/proxly-safari-extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B32NBD6HCA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chillaid.art.proxly-safari-extension";
+				PRODUCT_NAME = "proxly-safari-extension";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FD8AD16B2E7437F7006BB056 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = B32NBD6HCA;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FD8AD16C2E7437F7006BB056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = B32NBD6HCA;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD8AD0F02E7437F5006BB056 /* Build configuration list for PBXProject "proxly-safari-extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD8AD16B2E7437F7006BB056 /* Debug */,
+				FD8AD16C2E7437F7006BB056 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD8AD1612E7437F7006BB056 /* Build configuration list for PBXNativeTarget "proxly-safari-extension Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD8AD1622E7437F7006BB056 /* Debug */,
+				FD8AD1632E7437F7006BB056 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD8AD1662E7437F7006BB056 /* Build configuration list for PBXNativeTarget "proxly-safari-extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD8AD1672E7437F7006BB056 /* Debug */,
+				FD8AD1682E7437F7006BB056 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD8AD0ED2E7437F5006BB056 /* Project object */;
+}

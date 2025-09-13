@@ -1,0 +1,428 @@
+/* Proxly Safari Extension Popup Styles */
+
+:root {
+    color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #ffffff;
+  color: #333333;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.popup-container {
+  width: 280px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.popup-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.popup-header h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Toggle Section */
+.toggle-section {
+  margin-bottom: 20px;
+}
+
+.toggle-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.status-text {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e8f5e8;
+  color: #2e7d2e;
+}
+
+.status-text.disabled {
+  background: #fee;
+  color: #d32f2f;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  margin: 8px 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+  background-color: #007AFF;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.slider:hover {
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+}
+
+.toggle-description {
+  font-size: 11px;
+  color: #666;
+  margin: 4px 0 0 0;
+  line-height: 1.3;
+}
+
+/* Mode Section */
+.mode-section {
+  margin-bottom: 16px;
+}
+
+.mode-section h3 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.mode-option {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 4px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.mode-option input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.radio-custom {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-top: 1px;
+  position: relative;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.mode-option input[type="radio"]:checked + .radio-custom {
+  border-color: #007AFF;
+}
+
+.mode-option input[type="radio"]:checked + .radio-custom:after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #007AFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.option-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+}
+
+.mode-description {
+  font-size: 10px;
+  color: #666;
+  margin: 2px 0 8px 22px;
+  line-height: 1.3;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.action-button {
+  flex: 1;
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+  color: #333;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-button:hover {
+  background: #f0f0f0;
+  border-color: #bbb;
+}
+
+.action-button:active {
+  background: #e8e8e8;
+}
+
+/* Status Indicator */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.status-icon {
+  margin-right: 6px;
+  font-size: 12px;
+}
+
+.status-message {
+  color: #666;
+}
+
+.status-indicator.success {
+  background: #e8f5e8;
+  color: #2e7d2e;
+}
+
+.status-indicator.error {
+  background: #fee;
+  color: #d32f2f;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast support for Safari */
+.high-contrast {
+  --primary-color: #0000FF;
+  --background-color: #FFFFFF;
+  --text-color: #000000;
+  --border-color: #000000;
+}
+
+.high-contrast body {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.high-contrast .toggle-switch input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+.high-contrast .radio-custom {
+  border-color: var(--border-color);
+}
+
+.high-contrast .mode-option input[type="radio"]:checked + .radio-custom {
+  border-color: var(--primary-color);
+}
+
+.high-contrast .mode-option input[type="radio"]:checked + .radio-custom:after {
+  background: var(--primary-color);
+}
+
+/* Reduced motion support for Safari */
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Dark mode support - Safari compatible */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  .popup-header {
+    border-bottom-color: #444;
+  }
+  
+  .popup-header h1 {
+    color: #ffffff;
+  }
+  
+  .mode-section h3 {
+    color: #ffffff;
+  }
+  
+  .toggle-description {
+    color: #b0b0b0;
+  }
+  
+  .option-text {
+    color: #e0e0e0;
+  }
+  
+  .mode-description {
+    color: #b0b0b0;
+  }
+  
+  .radio-custom {
+    border-color: #777;
+    background: #2d2d2d;
+  }
+  
+  .mode-option input[type="radio"]:checked + .radio-custom {
+    border-color: #007AFF;
+    background: #2d2d2d;
+  }
+  
+  .status-text {
+    background: #2d5a2d;
+    color: #90ee90;
+  }
+  
+  .status-text.disabled {
+    background: #5d2d2d;
+    color: #ff9999;
+  }
+  
+  .action-button {
+    background: #2d2d2d;
+    border-color: #555;
+    color: #e0e0e0;
+  }
+  
+  .action-button:hover {
+    background: #3d3d3d;
+    border-color: #777;
+  }
+  
+  .status-indicator {
+    background: #2d2d2d;
+    color: #b0b0b0;
+  }
+  
+  .status-indicator.success {
+    background: #2d5a2d;
+    color: #90ee90;
+  }
+  
+  .status-indicator.error {
+    background: #5d2d2d;
+    color: #ff9999;
+  }
+  
+  /* Safari-specific dark mode adjustments */
+  .slider {
+    background-color: #555;
+  }
+  
+  .slider:before {
+    background-color: #f0f0f0;
+  }
+}
+
+/* Focus styles for accessibility - Safari optimized */
+.toggle-switch:focus-within .slider {
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+  outline: none;
+}
+
+.mode-option:focus-within .radio-custom {
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+  outline: none;
+}
+
+.action-button:focus {
+  outline: 2px solid #007AFF;
+  outline-offset: 1px;
+}
+
+/* Safari-specific WebKit scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* Safari-specific selection styling */
+::selection {
+  background: #007AFF;
+  color: white;
+}
