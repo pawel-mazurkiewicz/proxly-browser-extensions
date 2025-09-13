@@ -112,8 +112,16 @@ class ProxlyBackground {
           
         case 'CAPTURE_LINK':
           if (message.url && this.isValidUrl(message.url)) {
-            await this.forwardToProxly(message.url, sender.tab);
+            // For test pings, acknowledge without navigating
+            if (message.isTest) {
+              sendResponse({ success: true, test: true });
+              break;
+            }
+            // Respond first; then navigate
             sendResponse({ success: true });
+            this.forwardToProxly(message.url, sender.tab).catch((err) => {
+              console.error('Deferred forwardToProxly failed:', err);
+            });
           } else {
             sendResponse({ success: false, error: 'Invalid URL' });
           }

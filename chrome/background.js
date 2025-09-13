@@ -19,6 +19,9 @@ class ProxlyBackground {
       visualFeedback: true,
       soundFeedback: false
     };
+    // Register event listeners immediately to avoid missing events on cold start
+    this.setupEventListeners();
+    // Proceed with async initialization work
     this.init();
   }
 
@@ -30,9 +33,6 @@ class ProxlyBackground {
     
     // Set up context menu
     await this.createContextMenu();
-    
-    // Set up event listeners
-    this.setupEventListeners();
     
     // Update icon based on current settings
     await this.updateExtensionIcon(this.settings.enabled);
@@ -112,8 +112,17 @@ class ProxlyBackground {
           
         case 'CAPTURE_LINK':
           if (message.url && this.isValidUrl(message.url)) {
-            await this.forwardToProxly(message.url, sender.tab);
+            // For test pings, acknowledge without navigating
+            if (message.isTest) {
+              sendResponse({ success: true, test: true });
+              break;
+            }
+            // Respond first to keep the message port from closing when we navigate
             sendResponse({ success: true });
+            // Then perform the navigation without blocking the response
+            this.forwardToProxly(message.url, sender.tab).catch((err) => {
+              console.error('Deferred forwardToProxly failed:', err);
+            });
           } else {
             sendResponse({ success: false, error: 'Invalid URL' });
           }
@@ -161,6 +170,13 @@ class ProxlyBackground {
         console.log('Default settings saved');
       } catch (error) {
         console.error('Failed to save default settings:', error);
+      }
+      
+      // Ensure context menu exists immediately after install
+      try {
+        await this.createContextMenu();
+      } catch (e) {
+        console.warn('Could not create context menu on install:', e);
       }
       
       // Open options page on first install

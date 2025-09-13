@@ -297,41 +297,27 @@ class ProxlyContentScript {
 
   async captureLink(url, anchorElement) {
     try {
-      console.log('Capturing link:', url);
-      
-      // Try to send message to background script with retry logic
-      const response = await this.sendMessageWithRetry({
-        type: 'CAPTURE_LINK',
-        url: url
-      });
-      
-      if (response && response.success) {
-        // Show success feedback
-        this.showCaptureFeedback(anchorElement);
-        console.log('Link successfully captured:', url);
-      } else {
-        // If background script fails, create proxly:// URL directly
-        console.warn('Background script unavailable, creating proxly URL directly');
-        this.forwardToProxlyDirect(url);
-        this.showCaptureFeedback(anchorElement);
-      }
-      
+      console.log('Capturing link (direct):', url);
+      // Provide feedback BEFORE any navigation to avoid using chrome APIs after unload
+      this.showCaptureFeedback(anchorElement);
+      // Navigate directly via proxly protocol without messaging background
+      this.forwardToProxlyDirect(url);
     } catch (error) {
-      console.error('Failed to capture link:', error);
-      
-      // Fallback: create proxly:// URL directly without background script
-      try {
-        console.log('Using direct fallback for URL:', url);
-        this.forwardToProxlyDirect(url);
-        this.showCaptureFeedback(anchorElement);
-      } catch (fallbackError) {
-        console.error('Even fallback failed:', fallbackError);
-        this.showError('errorProxlyNotRunning');
-      }
+      console.error('Direct capture failed:', error);
+      this.showError('errorProxlyNotRunning');
     }
   }
 
   async sendMessageWithRetry(message, maxRetries = 2) {
+    // If runtime is gone, bail early
+    try {
+      if (!chrome || !chrome.runtime || !chrome.runtime.id) {
+        throw new Error('Extension context invalidated');
+      }
+    } catch (_) {
+      throw new Error('Extension context invalidated');
+    }
+
     for (let i = 0; i < maxRetries; i++) {
       try {
         const response = await chrome.runtime.sendMessage(message);
@@ -339,7 +325,13 @@ class ProxlyContentScript {
       } catch (error) {
         console.warn(`Message attempt ${i + 1} failed:`, error.message);
         
-        if (error.message.includes('Extension context invalidated')) {
+        const msg = (error && error.message) ? error.message : '';
+        if (
+          msg.includes('Extension context invalidated') ||
+          msg.includes('The message port closed before a response was received') ||
+          msg.includes('No receiving end') ||
+          msg.includes('Message manager disconnected')
+        ) {
           // Wait a bit and try again - sometimes the service worker restarts
           await new Promise(resolve => setTimeout(resolve, 100));
           continue;
