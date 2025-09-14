@@ -45,7 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FD8AD11B2E7437F7006BB056 /* proxly-safari-extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "proxly-safari-extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD8AD11B2E7437F7006BB056 /* Proxly Extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proxly Extension.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD8AD1312E7437F7006BB056 /* proxly-safari-extension Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "proxly-safari-extension Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDEB9CC22E7617EB00EA4E6A /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = "Shared (Extension)/Resources/background.js"; sourceTree = "<group>"; };
 		FDEB9CC32E7617EB00EA4E6A /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = "Shared (Extension)/Resources/images"; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		FD8AD10A2E7437F7006BB056 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD8AD11B2E7437F7006BB056 /* proxly-safari-extension.app */,
+				FD8AD11B2E7437F7006BB056 /* Proxly Extension.app */,
 				FD8AD1312E7437F7006BB056 /* proxly-safari-extension Extension.appex */,
 			);
 			name = Products;
@@ -196,7 +196,7 @@
 			packageProductDependencies = (
 			);
 			productName = "proxly-safari-extension (macOS)";
-			productReference = FD8AD11B2E7437F7006BB056 /* proxly-safari-extension.app */;
+			productReference = FD8AD11B2E7437F7006BB056 /* Proxly Extension.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FD8AD1302E7437F7006BB056 /* proxly-safari-extension Extension (macOS) */ = {
@@ -322,7 +322,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "Proxly Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -354,7 +354,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "Proxly Extension";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -387,7 +387,8 @@
 				DEVELOPMENT_TEAM = B32NBD6HCA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "Proxly Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -403,7 +404,7 @@
 					WebKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chillaid.art.proxly-safari-extension";
-				PRODUCT_NAME = "proxly-safari-extension";
+				PRODUCT_NAME = "Proxly Extension";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -422,7 +423,8 @@
 				DEVELOPMENT_TEAM = B32NBD6HCA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "proxly-safari-extension";
+				INFOPLIST_KEY_CFBundleDisplayName = "Proxly Extension";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -438,7 +440,7 @@
 					WebKit,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chillaid.art.proxly-safari-extension";
-				PRODUCT_NAME = "proxly-safari-extension";
+				PRODUCT_NAME = "Proxly Extension";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -9,7 +9,7 @@
 <body>
   <div class="settings-container" role="main">
     <header class="settings-header">
-      <img src="../images/icon-48.png" alt="Proxly" class="logo">
+      <img src="../images/icon-48.png" alt="Proxly" class="logo" data-i18n-attr="alt:logoAlt">
       <h1 data-i18n="settingsTitle">Proxly Extension Settings</h1>
       <p class="settings-subtitle" data-i18n="settingsSubtitle">Configure how the extension handles web links</p>
     </header>
@@ -61,7 +61,7 @@
       <section class="setting-section" role="group">
         <h2 data-i18n="feedbackTitle">User Feedback</h2>
         <p class="setting-description" data-i18n="feedbackDescription">
-          Configure visual and audio feedback when links are captured
+          Configure visual feedback when links are captured
         </p>
         
         <div class="feedback-options">
@@ -74,17 +74,6 @@
           </label>
           <p id="visual-feedback-desc" class="option-description">
             <span data-i18n="visualFeedbackDescription">Display a brief visual indicator when links are captured</span>
-          </p>
-          
-          <label class="checkbox-option">
-            <input type="checkbox" 
-                   id="sound-feedback" 
-                   aria-describedby="sound-feedback-desc">
-            <span class="checkbox-custom" aria-hidden="true"></span>
-            <span class="option-text" data-i18n="enableSoundFeedback">Play sound feedback</span>
-          </label>
-          <p id="sound-feedback-desc" class="option-description">
-            <span data-i18n="soundFeedbackDescription">Play a subtle sound when links are captured</span>
           </p>
         </div>
       </section>
@@ -113,13 +102,13 @@
       </section>
 
       <div class="form-actions">
-        <button type="submit" class="save-button" data-i18n="saveSettings">
+        <button type="submit" class="save-button" data-i18n="saveSettings" data-i18n-attr="aria-label:saveSettings">
           Save Settings
         </button>
-        <button type="button" class="reset-button" data-i18n="resetSettings">
+        <button type="button" class="reset-button" data-i18n="resetSettings" data-i18n-attr="aria-label:resetSettings">
           Reset to Defaults
         </button>
-        <button type="button" class="test-button" data-i18n="testConnection">
+        <button type="button" class="test-button" data-i18n="testConnection" data-i18n-attr="aria-label:testConnection">
           Test Connection
         </button>
       </div>

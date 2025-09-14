@@ -156,25 +156,31 @@ class SettingsManager {
    */
   async notifySettingsChange(settings) {
     try {
+      console.log('📢 Broadcasting settings change:', settings);
+      
       // Safari Web Extension uses browser namespace
       if (typeof browser !== 'undefined' && browser.runtime) {
-        await browser.runtime.sendMessage({
+        const response = await browser.runtime.sendMessage({
           type: 'SETTINGS_UPDATED',
           settings: settings
         });
+        console.log('📬 Settings broadcast response:', response);
         return;
       }
       
       // Fallback to chrome namespace
       if (typeof chrome !== 'undefined' && chrome.runtime) {
-        await chrome.runtime.sendMessage({
+        const response = await chrome.runtime.sendMessage({
           type: 'SETTINGS_UPDATED',
           settings: settings
         });
+        console.log('📬 Settings broadcast response:', response);
         return;
       }
+      
+      console.warn('⚠️ No runtime available for settings broadcast');
     } catch (error) {
-      console.warn('Failed to notify settings change:', error);
+      console.error('❌ Failed to notify settings change:', error);
     }
   }
 

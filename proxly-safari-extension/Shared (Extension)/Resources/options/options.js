@@ -92,7 +92,7 @@ class ProxlyOptionsPage {
     if (visualFeedbackCheckbox) {
       visualFeedbackCheckbox.checked = this.currentSettings.visualFeedback;
     }
-    
+
     const soundFeedbackCheckbox = document.getElementById('sound-feedback');
     if (soundFeedbackCheckbox) {
       soundFeedbackCheckbox.checked = this.currentSettings.soundFeedback;
@@ -109,11 +109,14 @@ class ProxlyOptionsPage {
       this.saveSettings();
     });
     
-    // Real-time validation and feedback
+    // Real-time validation and auto-save
     const inputs = form.querySelectorAll('input');
     inputs.forEach(input => {
-      input.addEventListener('change', () => {
+      input.addEventListener('change', async () => {
+        console.log('🔄 Settings input changed:', input.name, input.value, input.checked);
         this.validateForm();
+        // Auto-save settings when they change
+        await this.saveSettings();
       });
     });
     
@@ -174,7 +177,7 @@ class ProxlyOptionsPage {
       'visual-feedback': checkbox.checked 
         ? LocalizationHelper.getMessage('visualFeedbackEnabled', 'Visual feedback enabled')
         : LocalizationHelper.getMessage('visualFeedbackDisabled', 'Visual feedback disabled'),
-      'sound-feedback': checkbox.checked
+        'sound-feedback': checkbox.checked
         ? LocalizationHelper.getMessage('soundFeedbackEnabled', 'Sound feedback enabled')
         : LocalizationHelper.getMessage('soundFeedbackDisabled', 'Sound feedback disabled')
     };

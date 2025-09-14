@@ -182,5 +182,7 @@
     "accessibilitySettingsForm": {
         "message": "Proxly extension settings configuration form",
         "description": "Accessibility label for settings form"
-    }
+    },
+    "logoAlt": { "message": "Proxly", "description": "Alt text for Proxly logo" },
+    "toggleExtension": { "message": "Toggle Proxly extension on/off", "description": "ARIA label for main toggle" }
 }

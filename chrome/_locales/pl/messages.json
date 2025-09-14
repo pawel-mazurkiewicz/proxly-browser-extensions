@@ -236,5 +236,17 @@
         "example": "Tylko linki kliknięte przy przytrzymanej klawiszu Alt będą przechwytywane"
       }
     }
-  }
+  },
+  "popupTitle": { "message": "Proxly", "description": "Tytuł okna popup rozszerzenia" },
+  "extensionStatus": { "message": "Status Rozszerzenia", "description": "Etykieta statusu rozszerzenia" },
+  "statusEnabled": { "message": "Włączone", "description": "Tekst statusu gdy rozszerzenie jest włączone" },
+  "statusDisabled": { "message": "Wyłączone", "description": "Tekst statusu gdy rozszerzenie jest wyłączone" },
+  "toggleDescription": { "message": "Gdy włączone, linki zewnętrzne będą kierowane przez Proxly", "description": "Opis funkcji przełącznika" },
+  "linkHandlingMode": { "message": "Obsługa Linków", "description": "Nagłówek sekcji obsługi linków" },
+  "modeContextOnly": { "message": "Tylko menu kontekstowe", "description": "Opcja tylko menu kontekstowe" },
+  "modeContextOnlyDescription": { "message": "Użyj prawego kliku \"Otwórz za pomocą Proxly\" aby przechwytywać linki", "description": "Opis trybu tylko menu kontekstowe" },
+  "openSettings": { "message": "Ustawienia", "description": "Tekst przycisku otwierającego ustawienia" },
+  "checkingConnection": { "message": "Sprawdzanie połączenia...", "description": "Komunikat statusu podczas sprawdzania połączenia" },
+  "logoAlt": { "message": "Proxly", "description": "Tekst alt dla logo Proxly" },
+  "toggleExtension": { "message": "Przełącz rozszerzenie Proxly włącz/wyłącz", "description": "Etykieta ARIA dla głównego przełącznika" }
 }

@@ -126,16 +126,21 @@ class ProxlyPopup {
 
   async handleMainToggle(enabled) {
     try {
-      console.log('Main toggle changed:', enabled);
+      console.log('🔄 Main toggle changed:', enabled);
       
       // Update local settings
       this.settings.enabled = enabled;
+      
+      // Save to storage immediately
+      await browser.storage.sync.set(this.settings);
+      console.log('💾 Toggle settings saved to storage:', this.settings);
       
       // Send toggle message to background script
       const response = await browser.runtime.sendMessage({
         type: 'TOGGLE_EXTENSION',
         enabled: enabled
       });
+      console.log('📬 Toggle response:', response);
       
       if (response && response.enabled !== undefined) {
         this.settings.enabled = response.enabled;
@@ -143,32 +148,40 @@ class ProxlyPopup {
         this.announceToggleChange(response.enabled);
       }
       
+      // Also broadcast settings change to all contexts
+      await browser.runtime.sendMessage({
+        type: 'SETTINGS_UPDATED',
+        settings: this.settings
+      });
+      
     } catch (error) {
-      console.error('Failed to toggle extension:', error);
+      console.error('❌ Failed to toggle extension:', error);
       this.showStatus('Failed to toggle extension', 'error');
     }
   }
 
   async handleModeChange(newMode) {
     try {
-      console.log('Mode changed to:', newMode);
+      console.log('🔄 Mode changed to:', newMode);
       
       // Update settings
       this.settings.linkMode = newMode;
       
-      // Save to storage
-      await browser.storage.sync.set({ linkMode: newMode });
+      // Save complete settings to storage (not just the changed field)
+      await browser.storage.sync.set(this.settings);
+      console.log('💾 Settings saved to storage:', this.settings);
       
-      // Send settings update to background script
-      await browser.runtime.sendMessage({
+      // Send settings update to background script for broadcasting
+      const response = await browser.runtime.sendMessage({
         type: 'SETTINGS_UPDATED',
         settings: this.settings
       });
+      console.log('📬 Settings update response:', response);
       
       this.announceModeChange(newMode);
       
     } catch (error) {
-      console.error('Failed to change mode:', error);
+      console.error('❌ Failed to change mode:', error);
       this.showStatus('Failed to change mode', 'error');
     }
   }

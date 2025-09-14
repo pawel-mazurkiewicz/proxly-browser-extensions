@@ -165,9 +165,25 @@ class ProxlyBackground {
           }
           
         case 'SETTINGS_UPDATED':
+          console.log('🔄 Received settings update in background:', message.settings);
+          
+          // Update local settings cache immediately
+          this.settings = { ...this.settings, ...message.settings };
+          console.log('💾 Background settings updated:', this.settings);
+          
+          // Update extension icon based on new enabled state
+          if (message.settings.enabled !== undefined) {
+            await this.updateExtensionIcon(message.settings.enabled);
+          }
+          
+          // Update context menu visibility based on link mode
+          if (message.settings.linkMode !== undefined) {
+            await this.updateContextMenuVisibility(message.settings.linkMode);
+          }
+          
           // Broadcast settings update to all content scripts
           await this.broadcastSettingsUpdate(message.settings);
-          return Promise.resolve({ received: true });
+          return Promise.resolve({ received: true, updated: true });
           
         case 'TOGGLE_EXTENSION':
           const newState = message.enabled !== undefined ? message.enabled : !this.settings.enabled;
@@ -223,16 +239,39 @@ class ProxlyBackground {
 
   handleStorageChange(changes, namespace) {
     if (namespace === 'sync') {
-      console.log('Settings changed:', changes);
+      console.log('🔄 Storage changes detected in background:', changes);
+      
+      let settingsChanged = false;
       
       // Update local settings cache
-      if (changes.linkMode) {
+      if (changes.linkMode && changes.linkMode.newValue !== this.settings.linkMode) {
+        console.log(`🔧 Link mode changed: ${this.settings.linkMode} → ${changes.linkMode.newValue}`);
         this.settings.linkMode = changes.linkMode.newValue;
         this.updateContextMenuVisibility(changes.linkMode.newValue);
+        settingsChanged = true;
       }
-      if (changes.enabled) {
+      
+      if (changes.enabled && changes.enabled.newValue !== this.settings.enabled) {
+        console.log(`🔧 Enabled state changed: ${this.settings.enabled} → ${changes.enabled.newValue}`);
         this.settings.enabled = changes.enabled.newValue;
         this.updateExtensionIcon(changes.enabled.newValue);
+        settingsChanged = true;
+      }
+      
+      if (changes.visualFeedback && changes.visualFeedback.newValue !== this.settings.visualFeedback) {
+        console.log(`🔧 Visual feedback changed: ${this.settings.visualFeedback} → ${changes.visualFeedback.newValue}`);
+        this.settings.visualFeedback = changes.visualFeedback.newValue;
+        settingsChanged = true;
+      }
+      
+      if (changes.soundFeedback && changes.soundFeedback.newValue !== this.settings.soundFeedback) {
+        console.log(`🔧 Sound feedback changed: ${this.settings.soundFeedback} → ${changes.soundFeedback.newValue}`);
+        this.settings.soundFeedback = changes.soundFeedback.newValue;
+        settingsChanged = true;
+      }
+      
+      if (settingsChanged) {
+        console.log('💾 Background settings updated from storage:', this.settings);
       }
     }
   }
@@ -335,8 +374,14 @@ class ProxlyBackground {
 
   async broadcastSettingsUpdate(settings) {
     try {
+      console.log('📢 Broadcasting settings update to all tabs:', settings);
+      
       // Get all tabs
       const tabs = await browser.tabs.query({});
+      console.log(`📋 Found ${tabs.length} tabs to update`);
+      
+      let successCount = 0;
+      let errorCount = 0;
       
       // Send settings update to all content scripts
       for (const tab of tabs) {
@@ -345,13 +390,18 @@ class ProxlyBackground {
             type: 'SETTINGS_UPDATED',
             settings: settings
           });
+          successCount++;
+          console.debug(`✅ Settings sent to tab ${tab.id}`);
         } catch (error) {
           // Some tabs might not have the content script loaded
-          console.debug('Could not send settings to tab:', tab.id);
+          errorCount++;
+          console.debug(`⚠️ Could not send settings to tab ${tab.id}:`, error.message);
         }
       }
+      
+      console.log(`📊 Settings broadcast complete: ${successCount} success, ${errorCount} errors`);
     } catch (error) {
-      console.error('Failed to broadcast settings update:', error);
+      console.error('💥 Failed to broadcast settings update:', error);
     }
   }
 

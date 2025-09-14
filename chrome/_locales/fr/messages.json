@@ -236,5 +236,17 @@
         "example": "Seuls les liens cliqués en maintenant la touche Alt seront capturés"
       }
     }
-  }
+  },
+  "popupTitle": { "message": "Proxly", "description": "Titre de la fenêtre popup de l'extension" },
+  "extensionStatus": { "message": "Statut de l'Extension", "description": "Étiquette pour le statut de l'extension" },
+  "statusEnabled": { "message": "Activé", "description": "Statut lorsque l'extension est activée" },
+  "statusDisabled": { "message": "Désactivé", "description": "Statut lorsque l'extension est désactivée" },
+  "toggleDescription": { "message": "Lorsqu'il est activé, les liens externes seront routés via Proxly", "description": "Description de la fonctionnalité du basculeur" },
+  "linkHandlingMode": { "message": "Gestion des Liens", "description": "En-tête de section pour la gestion des liens" },
+  "modeContextOnly": { "message": "Menu clic droit uniquement", "description": "Option pour mode uniquement menu contextuel" },
+  "modeContextOnlyDescription": { "message": "Utiliser clic droit \"Ouvrir avec Proxly\" pour capturer les liens", "description": "Description pour mode uniquement menu contextuel" },
+  "openSettings": { "message": "Paramètres", "description": "Texte du bouton pour ouvrir les paramètres" },
+  "checkingConnection": { "message": "Vérification de la connexion...", "description": "Message d'état lors de la vérification de la connexion" },
+  "logoAlt": { "message": "Proxly", "description": "Texte alt pour le logo Proxly" },
+  "toggleExtension": { "message": "Activer/désactiver l'extension Proxly", "description": "Libellé ARIA pour le basculeur principal" }
 }

@@ -236,5 +236,17 @@
         "example": "Solo enlaces clickeados mientras se mantiene presionada la tecla Alt serán capturados"
       }
     }
-  }
+  },
+  "popupTitle": { "message": "Proxly", "description": "Título del popup de la extensión" },
+  "extensionStatus": { "message": "Estado de la Extensión", "description": "Etiqueta para el estado de la extensión" },
+  "statusEnabled": { "message": "Habilitado", "description": "Estado cuando la extensión está habilitada" },
+  "statusDisabled": { "message": "Deshabilitado", "description": "Estado cuando la extensión está deshabilitada" },
+  "toggleDescription": { "message": "Cuando esté habilitado, los enlaces externos serán enrutados a través de Proxly", "description": "Descripción de la funcionalidad del alternador" },
+  "linkHandlingMode": { "message": "Manejo de Enlaces", "description": "Encabezado de sección para opciones de manejo de enlaces" },
+  "modeContextOnly": { "message": "Solo menú contextual", "description": "Opción solo menú contextual" },
+  "modeContextOnlyDescription": { "message": "Usa clic derecho \"Abrir con Proxly\" para capturar enlaces", "description": "Descripción para modo solo menú contextual" },
+  "openSettings": { "message": "Configuración", "description": "Texto del botón para abrir configuración" },
+  "checkingConnection": { "message": "Verificando conexión...", "description": "Mensaje de estado al verificar la conexión" },
+  "logoAlt": { "message": "Proxly", "description": "Texto alt para el logo de Proxly" },
+  "toggleExtension": { "message": "Alternar extensión Proxly encendido/apagado", "description": "Etiqueta ARIA para el alternador principal" }
 }

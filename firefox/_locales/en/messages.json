@@ -236,5 +236,17 @@
         "example": "Only links clicked while holding the Alt key will be captured"
       }
     }
-  }
+  },
+  "popupTitle": { "message": "Proxly", "description": "Title of the extension popup" },
+  "extensionStatus": { "message": "Extension Status", "description": "Label for extension status section" },
+  "statusEnabled": { "message": "Enabled", "description": "Status text when extension is enabled" },
+  "statusDisabled": { "message": "Disabled", "description": "Status text when extension is disabled" },
+  "toggleDescription": { "message": "When enabled, external links will be routed through Proxly", "description": "Description of the toggle functionality" },
+  "linkHandlingMode": { "message": "Link Handling", "description": "Section header for link handling options" },
+  "modeContextOnly": { "message": "Right-click menu only", "description": "Option for context menu only mode" },
+  "modeContextOnlyDescription": { "message": "Use right-click \"Open with Proxly\" to capture links", "description": "Description for context menu only mode" },
+  "openSettings": { "message": "Settings", "description": "Button text for opening settings" },
+  "checkingConnection": { "message": "Checking connection...", "description": "Status message when checking connection" },
+  "logoAlt": { "message": "Proxly", "description": "Alt text for Proxly logo" },
+  "toggleExtension": { "message": "Toggle Proxly extension on/off", "description": "ARIA label for main toggle" }
 }

@@ -236,5 +236,17 @@
         "example": "Nur Links, die bei gedrückter Alt-Taste geklickt werden, werden erfasst"
       }
     }
-  }
+  },
+  "popupTitle": { "message": "Proxly", "description": "Titel des Erweiterungs-Popups" },
+  "extensionStatus": { "message": "Erweiterungsstatus", "description": "Beschriftung für den Erweiterungsstatus" },
+  "statusEnabled": { "message": "Aktiviert", "description": "Status wenn Erweiterung aktiviert ist" },
+  "statusDisabled": { "message": "Deaktiviert", "description": "Status wenn Erweiterung deaktiviert ist" },
+  "toggleDescription": { "message": "Wenn aktiviert, werden externe Links über Proxly geleitet", "description": "Beschreibung der Umschaltfunktion" },
+  "linkHandlingMode": { "message": "Link-Behandlung", "description": "Abschnittsüberschrift für Link-Behandlung" },
+  "modeContextOnly": { "message": "Nur Rechtsklick-Menü", "description": "Option nur Kontextmenü" },
+  "modeContextOnlyDescription": { "message": "Verwende Rechtsklick \"Mit Proxly öffnen\" um Links zu erfassen", "description": "Beschreibung für nur Kontextmenü" },
+  "openSettings": { "message": "Einstellungen", "description": "Schaltflächentext zum Öffnen der Einstellungen" },
+  "checkingConnection": { "message": "Verbindung wird geprüft...", "description": "Statusmeldung beim Prüfen der Verbindung" },
+  "logoAlt": { "message": "Proxly", "description": "Alt-Text für Proxly-Logo" },
+  "toggleExtension": { "message": "Proxly-Erweiterung ein/aus", "description": "ARIA-Beschriftung für Hauptumschalter" }
 }
