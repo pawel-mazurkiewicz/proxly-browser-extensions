@@ -61,7 +61,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "proxly-extension@proxly.app",
-      "strict_min_version": "79.0"
+      "strict_min_version": "109.0"
     }
   }
 }

@@ -287,15 +287,12 @@ class ProxlyBackground {
 
   async updateExtensionIcon(enabled) {
     try {
-      // For now, we'll use the same icon but could have different states
-      const iconPath = enabled ? 'icons/icon-48.png' : 'icons/icon-48.png';
-      
-      // Update action badge to show enabled/disabled status
-      await chrome.action.setBadgeText({
+      // Update badge to show enabled/disabled status (Firefox MV2)
+      await browser.browserAction.setBadgeText({
         text: enabled ? '' : 'OFF'
       });
       
-      await chrome.action.setBadgeBackgroundColor({
+      await browser.browserAction.setBadgeBackgroundColor({
         color: enabled ? '#4CAF50' : '#f44336'
       });
       
