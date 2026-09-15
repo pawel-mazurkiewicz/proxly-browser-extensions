@@ -14,8 +14,8 @@ const quiet = { log() {}, warn() {}, error() {}, debug() {}, info() {} };
 const tick = () => new Promise((resolve) => setImmediate(resolve));
 
 function fakeApi({ keepLinksInTab = false, permission = false, decision = 'passthrough' } = {}) {
-  const state = { keepLinksInTab, permission, ports: [] };
-  const listeners = { message: [], storage: [] };
+  const state = { keepLinksInTab, permission, ports: [], stored: [] };
+  const listeners = { message: [], storage: [], permissionsAdded: [], permissionsRemoved: [] };
   const event = (list) => ({ addListener: (fn) => list.push(fn) });
   const noopEvent = { addListener() {} };
   const api = {
@@ -48,11 +48,15 @@ function fakeApi({ keepLinksInTab = false, permission = false, decision = 'passt
     storage: {
       sync: {
         get: async (defaults) => ({ ...(typeof defaults === 'object' && defaults ? defaults : {}), keepLinksInTab: state.keepLinksInTab }),
-        set: async () => {}
+        set: async (data) => { state.stored.push(data); }
       },
       onChanged: event(listeners.storage)
     },
-    permissions: { contains: async () => state.permission },
+    permissions: {
+      contains: async () => state.permission,
+      onAdded: event(listeners.permissionsAdded),
+      onRemoved: event(listeners.permissionsRemoved)
+    },
     contextMenus: { onClicked: noopEvent, removeAll: async () => {}, create() {}, update() {} },
     action: { setBadgeText: async () => {}, setBadgeBackgroundColor: async () => {} },
     browserAction: { setBadgeText: async () => {}, setBadgeBackgroundColor: async () => {} },
@@ -62,7 +66,7 @@ function fakeApi({ keepLinksInTab = false, permission = false, decision = 'passt
   return { api, state, listeners };
 }
 
-async function loadBackground(browser, options) {
+async function loadBackground(browser, options, { skipTicks = false } = {}) {
   const fake = fakeApi(options);
   const context = {
     console: quiet,
@@ -94,7 +98,9 @@ async function loadBackground(browser, options) {
   } else {
     vm.runInContext(fs.readFileSync(path.join(ROOT, 'chrome', 'background.js'), 'utf8'), context);
   }
-  for (let i = 0; i < 5; i++) await tick(); // Firefox registers its listeners after async setup.
+  if (!skipTicks) {
+    for (let i = 0; i < 5; i++) await tick();
+  }
   const send = (message) => new Promise((resolve) => fake.listeners.message[0](message, { tab: { id: 1 } }, resolve));
   return { ...fake, send };
 }
@@ -134,7 +140,8 @@ for (const browser of ['chrome', 'firefox']) {
       const bg = await loadBackground(browser, { keepLinksInTab: true, permission: true });
       await bg.send({ type: 'DECIDE_LINK', url: 'https://x.test/' });
       bg.state.keepLinksInTab = false;
-      // Reset to Defaults clears storage, so the new value can be undefined rather than false.
+      // Reset to Defaults writes the other defaults and leaves keepLinksInTab untouched; a cleared
+      // value (e.g. after storage.sync.clear()) arrives as undefined rather than false.
       bg.listeners.storage.forEach((fn) => fn({ keepLinksInTab: { oldValue: true, newValue } }, 'sync'));
       assert.strictEqual(bg.state.ports[0].closed, true);
     });
@@ -147,5 +154,32 @@ for (const browser of ['chrome', 'firefox']) {
     const result = await bg.send({ type: 'DECIDE_LINK', url: 'https://x.test/' });
     assert.strictEqual(result.decision, 'reroute');
     assert.strictEqual(bg.state.ports[0].closed, true);
+  });
+
+  test(`${browser}: a message sent right after the background loads is answered`, async () => {
+    const bg = await loadBackground(browser, { keepLinksInTab: false, permission: true }, { skipTicks: true });
+    const result = await bg.send({ type: 'DECIDE_LINK', url: 'https://x.test/' });
+    assert.deepStrictEqual({ ...result }, { decision: 'reroute' });
+  });
+
+  test(`${browser}: granting nativeMessaging turns "Keep links in this tab" on`, async () => {
+    const bg = await loadBackground(browser, {});
+    await Promise.all(bg.listeners.permissionsAdded.map((fn) => fn({ permissions: ['nativeMessaging'] })));
+    // Objects from the vm sandbox have a different Object prototype than object literals written
+    // here, so deepStrictEqual needs each entry copied into this realm first.
+    assert.deepStrictEqual(bg.state.stored.map((entry) => ({ ...entry })), [{ keepLinksInTab: true }]);
+  });
+
+  test(`${browser}: removing nativeMessaging turns "Keep links in this tab" off`, async () => {
+    const bg = await loadBackground(browser, {});
+    await Promise.all(bg.listeners.permissionsRemoved.map((fn) => fn({ permissions: ['nativeMessaging'] })));
+    assert.deepStrictEqual(bg.state.stored.map((entry) => ({ ...entry })), [{ keepLinksInTab: false }]);
+  });
+
+  test(`${browser}: granting an unrelated permission leaves the setting alone`, async () => {
+    const bg = await loadBackground(browser, {});
+    await Promise.all(bg.listeners.permissionsAdded.map((fn) => fn({ permissions: ['tabs'] })));
+    await Promise.all(bg.listeners.permissionsRemoved.map((fn) => fn({ permissions: ['tabs'] })));
+    assert.deepStrictEqual(bg.state.stored, []);
   });
 }

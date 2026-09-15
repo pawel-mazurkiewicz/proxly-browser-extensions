@@ -85,6 +85,20 @@ class ProxlyBackground {
     chrome.storage.onChanged.addListener((changes, namespace) => {
       this.handleStorageChange(changes, namespace);
     });
+
+    // Keep "Keep links in this tab" in sync with the permission: a toolbar popup can lose focus
+    // (and close) while the permission prompt is up, granting or revoking the permission without
+    // the popup ever writing the setting.
+    chrome.permissions.onAdded.addListener((permissions) => {
+      if (permissions.permissions.includes('nativeMessaging')) {
+        chrome.storage.sync.set({ keepLinksInTab: true });
+      }
+    });
+    chrome.permissions.onRemoved.addListener((permissions) => {
+      if (permissions.permissions.includes('nativeMessaging')) {
+        chrome.storage.sync.set({ keepLinksInTab: false });
+      }
+    });
   }
 
   async handleContextMenuClick(info, tab) {

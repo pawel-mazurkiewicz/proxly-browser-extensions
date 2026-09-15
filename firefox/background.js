@@ -20,21 +20,21 @@ class ProxlyBackground {
       soundFeedback: false
     };
     this.connector = null;
+    // Register event listeners immediately: this is an event page ("persistent": false), so a
+    // message that wakes it can arrive before any async setup below finishes.
+    this.setupEventListeners();
     this.init();
   }
 
   async init() {
     console.log('Proxly background service worker initialized');
-    
+
     // Load initial settings first
     await this.loadSettings();
-    
+
     // Set up context menu
     await this.createContextMenu();
-    
-    // Set up event listeners
-    this.setupEventListeners();
-    
+
     // Update icon based on current settings
     await this.updateExtensionIcon(this.settings.enabled);
   }
@@ -78,6 +78,20 @@ class ProxlyBackground {
     // Storage change listener
     chrome.storage.onChanged.addListener((changes, namespace) => {
       this.handleStorageChange(changes, namespace);
+    });
+
+    // Keep "Keep links in this tab" in sync with the permission: a toolbar popup can lose focus
+    // (and close) while the permission prompt is up, granting or revoking the permission without
+    // the popup ever writing the setting.
+    browser.permissions.onAdded.addListener((permissions) => {
+      if (permissions.permissions.includes('nativeMessaging')) {
+        browser.storage.sync.set({ keepLinksInTab: true });
+      }
+    });
+    browser.permissions.onRemoved.addListener((permissions) => {
+      if (permissions.permissions.includes('nativeMessaging')) {
+        browser.storage.sync.set({ keepLinksInTab: false });
+      }
     });
   }
 
