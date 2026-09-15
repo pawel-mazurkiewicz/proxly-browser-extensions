@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Proxly Browser Extension",
   "description": "Route web links through Proxly for intelligent browser selection",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "default_locale": "en",
   
   "icons": {
@@ -44,6 +44,10 @@
     "contextMenus",
     "storage",
     "<all_urls>"
+  ],
+
+  "optional_permissions": [
+    "nativeMessaging"
   ],
   
   "browser_action": {
