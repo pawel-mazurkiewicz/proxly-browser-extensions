@@ -248,5 +248,11 @@
   "openSettings": { "message": "Ustawienia", "description": "Tekst przycisku otwierającego ustawienia" },
   "checkingConnection": { "message": "Sprawdzanie połączenia...", "description": "Komunikat statusu podczas sprawdzania połączenia" },
   "logoAlt": { "message": "Proxly", "description": "Tekst alt dla logo Proxly" },
-  "toggleExtension": { "message": "Przełącz rozszerzenie Proxly włącz/wyłącz", "description": "Etykieta ARIA dla głównego przełącznika" }
+  "toggleExtension": { "message": "Przełącz rozszerzenie Proxly włącz/wyłącz", "description": "Etykieta ARIA dla głównego przełącznika" },
+  "keepLinksTitle": { "message": "Zostawiaj linki w tej karcie", "description": "Toggle that keeps links in the current tab when Proxly would open them there" },
+  "keepLinksDescription": { "message": "Linki, które Proxly i tak otworzyłby w tej przeglądarce, zostają w bieżącej karcie. Wymaga aktualnej wersji Proxly.", "description": "Explains the Keep links in this tab toggle" },
+  "keepLinksOff": { "message": "Wyłączone: linki do innych stron trafiają do Proxly", "description": "Keep links status when the toggle is off" },
+  "keepLinksReady": { "message": "Włączone: połączono z Proxly", "description": "Keep links status when Proxly answers" },
+  "keepLinksNeedsSetup": { "message": "Proxly nie jest jeszcze do tego skonfigurowany", "description": "Keep links status when Proxly cannot be reached" },
+  "keepLinksSetUp": { "message": "Skonfiguruj w Proxly", "description": "Button that opens Proxly to set up the connection" }
 }

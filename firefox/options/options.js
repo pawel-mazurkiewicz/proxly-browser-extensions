@@ -35,7 +35,8 @@ class ProxlyOptionsPage {
     
     // Set extension version
     this.setExtensionVersion();
-    
+    this.setupKeepLinks();
+
     console.log('Options page initialized successfully');
   }
 
@@ -354,6 +355,18 @@ class ProxlyOptionsPage {
       const manifest = chrome.runtime.getManifest();
       versionElement.textContent = manifest.version || '1.0.0';
     }
+  }
+
+  setupKeepLinks() {
+    const toggle = document.getElementById('keep-links-toggle');
+    if (!toggle || typeof ProxlyKeepLinks === 'undefined') return Promise.resolve();
+    return ProxlyKeepLinks.attach({
+      api: typeof browser !== 'undefined' ? browser : chrome,
+      toggle,
+      statusLine: document.getElementById('keep-links-status'),
+      setupButton: document.getElementById('keep-links-setup'),
+      getMessage: (key) => LocalizationHelper.getMessage(key, '')
+    });
   }
 
   showStatus(message, type = 'info') {
