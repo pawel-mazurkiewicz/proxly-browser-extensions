@@ -12,7 +12,12 @@ class ProxlyContentScript {
       soundFeedback: false
     };
     this.accessibilityHelper = null;
-    
+    // "Keep links in this tab" (popup and options). Off unless the user turned it on.
+    this.keepLinksInTab = false;
+    // How long a plain click waits for the background before going to Proxly. The background gives the
+    // connector 150 ms; the rest covers waking Chrome's service worker.
+    this.decideTimeoutMs = 300;
+
     this.init();
   }
 
@@ -74,6 +79,7 @@ class ProxlyContentScript {
         visualFeedback: result.visualFeedback !== undefined ? result.visualFeedback : true,
         soundFeedback: result.soundFeedback || false
       };
+      this.keepLinksInTab = result.keepLinksInTab === true;
       console.log('✅ Content script settings loaded from storage:', this.settings);
       
       // Optionally try to sync with background script (but don't fail if it doesn't work)
@@ -145,6 +151,9 @@ class ProxlyContentScript {
           
           // Update settings based on storage changes
           let settingsChanged = false;
+          if (changes.keepLinksInTab) {
+            this.keepLinksInTab = changes.keepLinksInTab.newValue === true;
+          }
           if (changes.enabled && changes.enabled.newValue !== this.settings.enabled) {
             this.settings.enabled = changes.enabled.newValue;
             settingsChanged = true;
@@ -193,7 +202,7 @@ class ProxlyContentScript {
       event.stopPropagation();
 
       // Capture the link
-      this.captureLink(url, anchor);
+      this.captureLink(url, anchor, event);
       
     } catch (error) {
       console.error('Error handling link click:', error);
@@ -299,10 +308,17 @@ class ProxlyContentScript {
     }
   }
 
-  async captureLink(url, anchorElement) {
+  async captureLink(url, anchorElement, event) {
     try {
+      if (event && this.keepLinksInTab && ProxlyClickIntent.isPlainNavigation(anchorElement, event, document)) {
+        if ((await this.decide(url)) === 'passthrough') {
+          console.log('Proxly would open this link here; keeping it in the current tab:', url);
+          this.navigateInPlace(url);
+          return;
+        }
+      }
       console.log('Capturing link (direct):', url);
-      // Provide feedback BEFORE any navigation
+      // Provide feedback BEFORE any navigation to avoid using extension APIs after unload
       this.showCaptureFeedback(anchorElement);
       // Navigate directly via proxly protocol without messaging background
       this.forwardToProxlyDirect(url);
@@ -310,6 +326,35 @@ class ProxlyContentScript {
       console.error('Direct capture failed:', error);
       this.showError('errorProxlyNotRunning');
     }
+  }
+
+  /**
+   * Asks the background whether Proxly would reroute this link. Anything but 'passthrough', including
+   * no answer within decideTimeoutMs, sends the link to Proxly as before.
+   */
+  async decide(url) {
+    let timer;
+    const timeout = new Promise((resolve) => {
+      timer = setTimeout(() => resolve('reroute'), this.decideTimeoutMs);
+    });
+    const answer = Promise.resolve()
+      .then(() => this.api().runtime.sendMessage({ type: 'DECIDE_LINK', url }))
+      .then((response) => (response && response.decision === 'passthrough' ? 'passthrough' : 'reroute'))
+      .catch(() => 'reroute');
+    try {
+      return await Promise.race([answer, timeout]);
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  navigateInPlace(url) {
+    window.location.assign(url);
+  }
+
+  /** Firefox's `browser` returns promises everywhere; Chrome has only `chrome`. */
+  api() {
+    return typeof browser !== 'undefined' ? browser : chrome;
   }
 
   async sendMessageWithRetry(message, maxRetries = 2) {
