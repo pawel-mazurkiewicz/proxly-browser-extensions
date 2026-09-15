@@ -65,6 +65,7 @@ async function loadContentScript(browser, { keepLinksInTab = true, decide = () =
   script.showCaptureFeedback = () => { feedback += 1; };
   return {
     script,
+    context,
     page,
     storageListeners,
     feedback: () => feedback,
@@ -73,7 +74,7 @@ async function loadContentScript(browser, { keepLinksInTab = true, decide = () =
 }
 
 const anchor = (attrs = {}) => ({ getAttribute: (name) => (name in attrs ? attrs[name] : null) });
-const plainClick = { button: 0 };
+const plainClick = { button: 0, isTrusted: true };
 
 for (const browser of ['chrome', 'firefox']) {
   test(`${browser}: a link Proxly would open here stays in the tab, without the indicator`, async () => {
@@ -101,7 +102,7 @@ for (const browser of ['chrome', 'firefox']) {
 
   test(`${browser}: modified clicks and new-window links go straight to Proxly`, async () => {
     const cs = await loadContentScript(browser);
-    await cs.script.captureLink(LINK, anchor(), { button: 0, metaKey: true });
+    await cs.script.captureLink(LINK, anchor(), { button: 0, metaKey: true, isTrusted: true });
     await cs.script.captureLink(LINK, anchor({ target: '_blank' }), plainClick);
     assert.strictEqual(cs.decisions().length, 0);
     assert.strictEqual(cs.page.proxly.length, 2);
@@ -128,5 +129,41 @@ for (const browser of ['chrome', 'firefox']) {
     cs.storageListeners.forEach((fn) => fn({ keepLinksInTab: { newValue: true } }, 'sync'));
     await cs.script.captureLink(LINK, anchor(), plainClick);
     assert.deepStrictEqual(cs.page.assigned, [LINK]);
+  });
+
+  test(`${browser}: an untrusted click sends the link to Proxly`, async () => {
+    const cs = await loadContentScript(browser);
+    await cs.script.captureLink(LINK, anchor(), { button: 0, isTrusted: false });
+    assert.strictEqual(cs.decisions().length, 0);
+    assert.deepStrictEqual(cs.page.proxly, [PROXLY_LINK]);
+    assert.deepStrictEqual(cs.page.assigned, []);
+  });
+
+  test(`${browser}: a rel="noopener noreferrer" link sends the link to Proxly`, async () => {
+    const cs = await loadContentScript(browser);
+    await cs.script.captureLink(LINK, anchor({ rel: 'noopener noreferrer' }), plainClick);
+    assert.strictEqual(cs.decisions().length, 0);
+    assert.deepStrictEqual(cs.page.proxly, [PROXLY_LINK]);
+    assert.deepStrictEqual(cs.page.assigned, []);
+  });
+
+  test(`${browser}: a link with referrerpolicy="no-referrer" sends the link to Proxly`, async () => {
+    const cs = await loadContentScript(browser);
+    await cs.script.captureLink(LINK, anchor({ referrerpolicy: 'no-referrer' }), plainClick);
+    assert.strictEqual(cs.decisions().length, 0);
+    assert.deepStrictEqual(cs.page.proxly, [PROXLY_LINK]);
+    assert.deepStrictEqual(cs.page.assigned, []);
+  });
+
+  test(`${browser}: ProxlyClickIntent.isPlainNavigation throwing sends the link to Proxly`, async () => {
+    const cs = await loadContentScript(browser);
+    vm.runInContext(
+      "ProxlyClickIntent.isPlainNavigation = () => { throw new Error('mis-packaged build'); };",
+      cs.context
+    );
+    await cs.script.captureLink(LINK, anchor(), plainClick);
+    assert.strictEqual(cs.decisions().length, 0);
+    assert.deepStrictEqual(cs.page.proxly, [PROXLY_LINK]);
+    assert.deepStrictEqual(cs.page.assigned, []);
   });
 }
