@@ -179,7 +179,13 @@ class ProxlyBackground {
   }
 
   async connectorClient() {
-    if (!(await this.connectorAllowed())) return null;
+    if (!(await this.connectorAllowed())) {
+      if (this.connector) {
+        this.connector.disconnect();
+        this.connector = null;
+      }
+      return null;
+    }
     if (!this.connector && typeof ProxlyConnectorClient !== 'undefined') {
       this.connector = new ProxlyConnectorClient.ConnectorClient({ runtime: browser.runtime });
     }

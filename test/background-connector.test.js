@@ -14,7 +14,7 @@ const quiet = { log() {}, warn() {}, error() {}, debug() {}, info() {} };
 const tick = () => new Promise((resolve) => setImmediate(resolve));
 
 function fakeApi({ keepLinksInTab = false, permission = false, decision = 'passthrough' } = {}) {
-  const state = { keepLinksInTab, ports: [] };
+  const state = { keepLinksInTab, permission, ports: [] };
   const listeners = { message: [], storage: [] };
   const event = (list) => ({ addListener: (fn) => list.push(fn) });
   const noopEvent = { addListener() {} };
@@ -52,7 +52,7 @@ function fakeApi({ keepLinksInTab = false, permission = false, decision = 'passt
       },
       onChanged: event(listeners.storage)
     },
-    permissions: { contains: async () => permission },
+    permissions: { contains: async () => state.permission },
     contextMenus: { onClicked: noopEvent, removeAll: async () => {}, create() {}, update() {} },
     action: { setBadgeText: async () => {}, setBadgeBackgroundColor: async () => {} },
     browserAction: { setBadgeText: async () => {}, setBadgeBackgroundColor: async () => {} },
@@ -139,4 +139,13 @@ for (const browser of ['chrome', 'firefox']) {
       assert.strictEqual(bg.state.ports[0].closed, true);
     });
   }
+
+  test(`${browser}: revoking the permission closes the connection at the next request`, async () => {
+    const bg = await loadBackground(browser, { keepLinksInTab: true, permission: true });
+    await bg.send({ type: 'DECIDE_LINK', url: 'https://x.test/' });
+    bg.state.permission = false;
+    const result = await bg.send({ type: 'DECIDE_LINK', url: 'https://x.test/' });
+    assert.strictEqual(result.decision, 'reroute');
+    assert.strictEqual(bg.state.ports[0].closed, true);
+  });
 }
