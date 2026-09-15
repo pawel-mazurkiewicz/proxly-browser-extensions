@@ -9,6 +9,7 @@
     "build:firefox": "node scripts/build.js firefox",
     "clean": "rm -rf build/",
     "test": "node --test test/*.test.js",
+    "dev": "node scripts/dev-build.js",
     "lint": "eslint shared/ chrome/ firefox/",
     "validate": "node scripts/validate.js"
   },
