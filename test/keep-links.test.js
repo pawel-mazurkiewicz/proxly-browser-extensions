@@ -85,6 +85,52 @@ test('attach wires the toggle, status line and setup button', async () => {
   assert.strictEqual(closed, 1);
 });
 
+test('a rejecting permission request still refreshes the toggle and status, with no unhandled rejection', async () => {
+  const originalWarn = console.warn;
+  console.warn = () => {};
+  try {
+    const listeners = {};
+    const control = (name) => ({ checked: false, style: {}, textContent: '', addEventListener: (type, fn) => { listeners[name] = fn; } });
+    const toggle = control('toggle');
+    const statusLine = control('status');
+    const setupButton = control('setup');
+    const { api } = fakeApi({ reply: { enabled: false, connected: false, connectorVersion: null, browser: null } });
+    api.permissions.request = async () => { throw new Error('denied'); };
+
+    await ProxlyKeepLinks.attach({ api, toggle, statusLine, setupButton, getMessage: (key) => key, afterSetup: () => {} });
+
+    toggle.checked = true; // the browser sets this natively before the change event fires
+    await listeners.toggle(); // must not throw / leave an unhandled rejection
+
+    assert.strictEqual(toggle.checked, false);
+    assert.strictEqual(statusLine.textContent, 'keepLinksOff');
+  } finally {
+    console.warn = originalWarn;
+  }
+});
+
+test('a rejecting setup does not run afterSetup', async () => {
+  const originalWarn = console.warn;
+  console.warn = () => {};
+  try {
+    const listeners = {};
+    const control = (name) => ({ checked: false, style: {}, textContent: '', addEventListener: (type, fn) => { listeners[name] = fn; } });
+    const toggle = control('toggle');
+    const statusLine = control('status');
+    const setupButton = control('setup');
+    const { api } = fakeApi();
+    api.tabs.update = async () => { throw new Error('cannot navigate'); };
+    let closed = 0;
+
+    await ProxlyKeepLinks.attach({ api, toggle, statusLine, setupButton, getMessage: (key) => key, afterSetup: () => { closed += 1; } });
+
+    await listeners.setup(); // must not throw / leave an unhandled rejection
+    assert.strictEqual(closed, 0);
+  } finally {
+    console.warn = originalWarn;
+  }
+});
+
 test('chrome and firefox ship identical keep-links modules', () => {
   const read = (browser) => fs.readFileSync(path.join(__dirname, '..', browser, 'shared', 'keep-links.js'), 'utf8');
   assert.strictEqual(read('firefox'), read('chrome'));

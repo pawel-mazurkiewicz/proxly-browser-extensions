@@ -57,12 +57,20 @@ const ProxlyKeepLinks = (() => {
       setupButton.style.display = showSetup ? '' : 'none';
     };
     toggle.addEventListener('change', async () => {
-      toggle.checked = await setEnabled(api, toggle.checked);
+      try {
+        toggle.checked = await setEnabled(api, toggle.checked);
+      } catch (error) {
+        console.warn('Keep links in this tab could not be changed:', error);
+      }
       await refresh();
     });
     setupButton.addEventListener('click', async () => {
-      await openSetup(api);
-      afterSetup();
+      try {
+        await openSetup(api);
+        afterSetup();
+      } catch (error) {
+        console.warn('Could not open Proxly to set up:', error);
+      }
     });
     return refresh();
   }
