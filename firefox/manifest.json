@@ -17,6 +17,7 @@
       "shared/constants.js",
       "shared/localization.js",
       "shared/settings-manager.js",
+      "shared/connector-client.js",
       "background.js"
     ],
     "persistent": false
