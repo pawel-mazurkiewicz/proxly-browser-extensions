@@ -85,6 +85,12 @@ test('same-site — private suffixes separate neighbours', () => {
   assert.strictEqual(isSameSite('alice.github.io', 'alice.github.io'), true);
 });
 
+test('same-site — a page served from a public suffix is not the same site as sites under it', () => {
+  assert.strictEqual(isSameSite('foo.github.io', 'github.io'), false);
+  assert.strictEqual(isSameSite('github.io', 'foo.github.io'), false);
+  assert.strictEqual(isSameSite('github.io', 'github.io'), true);
+});
+
 test('same-site — localhost and IP hosts', () => {
   assert.strictEqual(isSameSite('localhost', 'localhost'), true);
   assert.strictEqual(isSameSite('127.0.0.1', 'localhost'), false);

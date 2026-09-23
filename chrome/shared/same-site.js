@@ -127,8 +127,9 @@ const ProxlySameSite = (() => {
       return false;
     }
 
-    // The dot boundary stops "notexample.com" matching "example.com".
-    return link === pageDomain || link.endsWith('.' + pageDomain);
+    // Compare both registrable domains. A suffix check on the page's domain would treat
+    // foo.github.io as the same site as a page on github.io, which is itself a public suffix.
+    return registrableDomain(link) === pageDomain;
   }
 
   return { registrableDomain, isSameSite };
