@@ -17,6 +17,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const { domainToASCII } = require('url');
 
 const PSL_URL = 'https://publicsuffix.org/list/public_suffix_list.dat';
 
@@ -50,7 +51,19 @@ function parseRules(raw) {
     .split('\n')
     .map((line) => line.trim())
     .filter((line) => line.length > 0 && !line.startsWith('//'))
-    .filter((line) => line.includes('.'));
+    .filter((line) => line.includes('.'))
+    .map(toAsciiRule);
+}
+
+// The list writes internationalised rules in Unicode ("公司.cn"), but URL.hostname is always
+// punycode ("xn--55qx5d.cn"), so a Unicode rule would never match. Keep the "!" and "*." prefixes.
+function toAsciiRule(rule) {
+  const prefix = rule.startsWith('!') ? '!' : rule.startsWith('*.') ? '*.' : '';
+  const ascii = domainToASCII(rule.slice(prefix.length));
+  if (!ascii) {
+    throw new Error(`Cannot convert public suffix rule to ASCII: ${rule}`);
+  }
+  return prefix + ascii;
 }
 
 function render(rules) {

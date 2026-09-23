@@ -35,6 +35,14 @@ test('registrable domain — private suffixes are honoured', () => {
   assert.strictEqual(registrableDomain('bob.github.io'), 'bob.github.io');
 });
 
+test('registrable domain — internationalised suffixes match the punycode hostnames URL gives us', () => {
+  // 公司.cn is a public suffix; new URL('https://a.公司.cn/').hostname is 'a.xn--55qx5d.cn'.
+  assert.strictEqual(new URL('https://a.公司.cn/').hostname, 'a.xn--55qx5d.cn');
+  assert.strictEqual(registrableDomain('a.xn--55qx5d.cn'), 'a.xn--55qx5d.cn');
+  assert.strictEqual(registrableDomain('www.a.xn--55qx5d.cn'), 'a.xn--55qx5d.cn');
+  assert.strictEqual(isSameSite('a.xn--55qx5d.cn', 'b.xn--55qx5d.cn'), false);
+});
+
 test('registrable domain — a bare public suffix has no registrable domain above it', () => {
   assert.strictEqual(registrableDomain('co.uk'), 'co.uk');
   assert.strictEqual(registrableDomain('com'), 'com');
