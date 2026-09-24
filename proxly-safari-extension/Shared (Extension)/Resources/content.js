@@ -274,16 +274,18 @@ class ProxlyContentScript {
         const linkUrl = new URL(anchor.href, document.baseURI);
         const currentUrl = new URL(window.location.href);
         
-        const isExternal = linkUrl.origin !== currentUrl.origin;
+        // Compare registrable domains, not origins: docs.example.com -> www.example.com,
+        // http -> https and port-only changes are same-site navigation and must not be
+        // hijacked (proxly-releases#5).
+        const isExternal = !ProxlySameSite.isSameSite(linkUrl.hostname, currentUrl.hostname);
         console.log('🌐 All links mode - external link check:', {
-          linkOrigin: linkUrl.origin,
-          currentOrigin: currentUrl.origin,
           isExternal,
-          linkHost: linkUrl.host,
-          currentHost: currentUrl.host
+          linkHost: linkUrl.hostname,
+          currentHost: currentUrl.hostname,
+          currentSite: ProxlySameSite.registrableDomain(currentUrl.hostname)
         });
-        
-        // Only capture cross-origin links in 'all' mode to avoid breaking navigation
+
+        // Only capture cross-site links in 'all' mode to avoid breaking navigation
         if (isExternal) {
           console.log('✅ Will capture external link:', anchor.href);
         } else {

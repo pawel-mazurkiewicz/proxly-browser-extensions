@@ -42,7 +42,8 @@ class ProxlyPopup {
       
       // Update UI
       this.updateUI();
-      
+      this.setupKeepLinks();
+
       console.log('Popup initialized successfully');
     } catch (error) {
       console.error('Failed to initialize popup:', error);
@@ -241,6 +242,19 @@ class ProxlyPopup {
     } catch (error) {
       console.error('Failed to open options page:', error);
     }
+  }
+
+  setupKeepLinks() {
+    const toggle = document.getElementById('keep-links-toggle');
+    if (!toggle || typeof ProxlyKeepLinks === 'undefined') return Promise.resolve();
+    return ProxlyKeepLinks.attach({
+      api: typeof browser !== 'undefined' ? browser : chrome,
+      toggle,
+      statusLine: document.getElementById('keep-links-status'),
+      setupButton: document.getElementById('keep-links-setup'),
+      getMessage: (key) => this.getMessage(key, ''),
+      afterSetup: () => window.close()
+    });
   }
 
   showStatus(message, type) {

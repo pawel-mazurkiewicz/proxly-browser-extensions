@@ -19,21 +19,22 @@ class ProxlyBackground {
       visualFeedback: true,
       soundFeedback: false
     };
+    this.connector = null;
+    // Register event listeners immediately: this is an event page ("persistent": false), so a
+    // message that wakes it can arrive before any async setup below finishes.
+    this.setupEventListeners();
     this.init();
   }
 
   async init() {
     console.log('Proxly background service worker initialized');
-    
+
     // Load initial settings first
     await this.loadSettings();
-    
+
     // Set up context menu
     await this.createContextMenu();
-    
-    // Set up event listeners
-    this.setupEventListeners();
-    
+
     // Update icon based on current settings
     await this.updateExtensionIcon(this.settings.enabled);
   }
@@ -77,6 +78,20 @@ class ProxlyBackground {
     // Storage change listener
     chrome.storage.onChanged.addListener((changes, namespace) => {
       this.handleStorageChange(changes, namespace);
+    });
+
+    // Keep "Keep links in this tab" in sync with the permission: a toolbar popup can lose focus
+    // (and close) while the permission prompt is up, granting or revoking the permission without
+    // the popup ever writing the setting.
+    browser.permissions.onAdded.addListener((permissions) => {
+      if (permissions.permissions.includes('nativeMessaging')) {
+        browser.storage.sync.set({ keepLinksInTab: true });
+      }
+    });
+    browser.permissions.onRemoved.addListener((permissions) => {
+      if (permissions.permissions.includes('nativeMessaging')) {
+        browser.storage.sync.set({ keepLinksInTab: false });
+      }
     });
   }
 
@@ -140,7 +155,26 @@ class ProxlyBackground {
           await this.updateExtensionIcon(newState);
           sendResponse({ enabled: newState });
           break;
-          
+
+        case 'DECIDE_LINK': {
+          const client = message.url && this.isValidUrl(message.url) ? await this.connectorClient() : null;
+          sendResponse({ decision: client ? await client.decide(message.url) : 'reroute' });
+          break;
+        }
+
+        case 'CONNECTOR_STATUS': {
+          const enabled = await this.connectorAllowed();
+          const client = enabled ? await this.connectorClient() : null;
+          const hello = client ? await client.hello() : null;
+          sendResponse({
+            enabled,
+            connected: Boolean(hello),
+            connectorVersion: hello ? hello.connectorVersion : null,
+            browser: hello ? hello.browser : null
+          });
+          break;
+        }
+
         default:
           console.warn('Unknown message type:', message.type);
           sendResponse({ error: 'Unknown message type' });
@@ -149,6 +183,27 @@ class ProxlyBackground {
       console.error('Error handling runtime message:', error);
       sendResponse({ error: error.message });
     }
+  }
+
+  /** "Keep links in this tab" is on and the user granted native messaging. */
+  async connectorAllowed() {
+    const stored = await browser.storage.sync.get({ keepLinksInTab: false });
+    if (!stored.keepLinksInTab) return false;
+    return browser.permissions.contains({ permissions: ['nativeMessaging'] });
+  }
+
+  async connectorClient() {
+    if (!(await this.connectorAllowed())) {
+      if (this.connector) {
+        this.connector.disconnect();
+        this.connector = null;
+      }
+      return null;
+    }
+    if (!this.connector && typeof ProxlyConnectorClient !== 'undefined') {
+      this.connector = new ProxlyConnectorClient.ConnectorClient({ runtime: browser.runtime });
+    }
+    return this.connector;
   }
 
   async handleInstallation(details) {
@@ -180,9 +235,14 @@ class ProxlyBackground {
   }
 
   handleStorageChange(changes, namespace) {
+    if (namespace === 'sync' && changes.keepLinksInTab && changes.keepLinksInTab.newValue !== true && this.connector) {
+      this.connector.disconnect();
+      this.connector = null;
+    }
+
     if (namespace === 'sync') {
       console.log('Settings changed:', changes);
-      
+
       // Update context menu if needed
       if (changes.linkMode) {
         this.updateContextMenuVisibility(changes.linkMode.newValue);

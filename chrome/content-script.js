@@ -12,7 +12,12 @@ class ProxlyContentScript {
       soundFeedback: false
     };
     this.accessibilityHelper = null;
-    
+    // "Keep links in this tab" (popup and options). Off unless the user turned it on.
+    this.keepLinksInTab = false;
+    // How long a plain click waits for the background before going to Proxly. The background gives the
+    // connector 150 ms; the rest covers waking Chrome's service worker.
+    this.decideTimeoutMs = 300;
+
     this.init();
   }
 
@@ -74,6 +79,7 @@ class ProxlyContentScript {
         visualFeedback: result.visualFeedback !== undefined ? result.visualFeedback : true,
         soundFeedback: result.soundFeedback || false
       };
+      this.keepLinksInTab = result.keepLinksInTab === true;
       console.log('✅ Content script settings loaded from storage:', this.settings);
       
       // Optionally try to sync with background script (but don't fail if it doesn't work)
@@ -145,6 +151,9 @@ class ProxlyContentScript {
           
           // Update settings based on storage changes
           let settingsChanged = false;
+          if (changes.keepLinksInTab) {
+            this.keepLinksInTab = changes.keepLinksInTab.newValue === true;
+          }
           if (changes.enabled && changes.enabled.newValue !== this.settings.enabled) {
             this.settings.enabled = changes.enabled.newValue;
             settingsChanged = true;
@@ -193,7 +202,7 @@ class ProxlyContentScript {
       event.stopPropagation();
 
       // Capture the link
-      this.captureLink(url, anchor);
+      this.captureLink(url, anchor, event);
       
     } catch (error) {
       console.error('Error handling link click:', error);
@@ -263,14 +272,18 @@ class ProxlyContentScript {
         const linkUrl = new URL(anchor.href, document.baseURI);
         const currentUrl = new URL(window.location.href);
         
-        const isExternal = linkUrl.origin !== currentUrl.origin;
+        // Compare registrable domains, not origins: docs.example.com -> www.example.com,
+        // http -> https and port-only changes are same-site navigation and must not be
+        // hijacked (proxly-releases#5).
+        const isExternal = !ProxlySameSite.isSameSite(linkUrl.hostname, currentUrl.hostname);
         console.log('All links mode - external link check:', {
-          linkOrigin: linkUrl.origin,
-          currentOrigin: currentUrl.origin,
+          linkHost: linkUrl.hostname,
+          currentHost: currentUrl.hostname,
+          currentSite: ProxlySameSite.registrableDomain(currentUrl.hostname),
           isExternal
         });
-        
-        // Only capture cross-origin links in 'all' mode to avoid breaking navigation
+
+        // Only capture cross-site links in 'all' mode to avoid breaking navigation
         return isExternal;
       } catch (error) {
         console.error('Error parsing URL:', error);
@@ -295,10 +308,23 @@ class ProxlyContentScript {
     }
   }
 
-  async captureLink(url, anchorElement) {
+  async captureLink(url, anchorElement, event) {
+    if (this.keepLinksInTab && this.mayStayInTab(anchorElement, event)) {
+      try {
+        if ((await this.decide(url)) === 'passthrough') {
+          console.log('Proxly would open this link here; keeping it in the current tab:', url);
+          this.navigateInPlace(url);
+          return;
+        }
+      } catch (error) {
+        // Fall through to the Proxly path below; never leave the click dead.
+        console.warn('Keeping the link in the tab failed; sending it to Proxly instead:', error);
+      }
+    }
+
     try {
       console.log('Capturing link (direct):', url);
-      // Provide feedback BEFORE any navigation to avoid using chrome APIs after unload
+      // Provide feedback BEFORE any navigation to avoid using extension APIs after unload
       this.showCaptureFeedback(anchorElement);
       // Navigate directly via proxly protocol without messaging background
       this.forwardToProxlyDirect(url);
@@ -306,6 +332,61 @@ class ProxlyContentScript {
       console.error('Direct capture failed:', error);
       this.showError('errorProxlyNotRunning');
     }
+  }
+
+  /**
+   * Whether this click may stay in the current tab when Proxly would not reroute it: a real user
+   * click or key press (event.isTrusted), on a link that is not opting out of sending a referrer,
+   * that ProxlyClickIntent judges a plain same-tab navigation. Returns false on any exception (for
+   * example ProxlyClickIntent being undefined in a mis-packaged build) so the click still reaches
+   * Proxly instead of being left dead.
+   */
+  mayStayInTab(anchorElement, event) {
+    try {
+      if (!event || event.isTrusted !== true) {
+        return false;
+      }
+      const rel = anchorElement.getAttribute('rel') || '';
+      if (/\bnoreferrer\b/i.test(rel)) {
+        return false;
+      }
+      if (anchorElement.getAttribute('referrerpolicy') !== null) {
+        return false;
+      }
+      return ProxlyClickIntent.isPlainNavigation(anchorElement, event, document);
+    } catch (error) {
+      console.warn('Could not evaluate the keep-links-in-tab check; sending to Proxly:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Asks the background whether Proxly would reroute this link. Anything but 'passthrough', including
+   * no answer within decideTimeoutMs, sends the link to Proxly as before.
+   */
+  async decide(url) {
+    let timer;
+    const timeout = new Promise((resolve) => {
+      timer = setTimeout(() => resolve('reroute'), this.decideTimeoutMs);
+    });
+    const answer = Promise.resolve()
+      .then(() => this.api().runtime.sendMessage({ type: 'DECIDE_LINK', url }))
+      .then((response) => (response && response.decision === 'passthrough' ? 'passthrough' : 'reroute'))
+      .catch(() => 'reroute');
+    try {
+      return await Promise.race([answer, timeout]);
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  navigateInPlace(url) {
+    window.location.assign(url);
+  }
+
+  /** Firefox's `browser` returns promises everywhere; Chrome has only `chrome`. */
+  api() {
+    return typeof browser !== 'undefined' ? browser : chrome;
   }
 
   async sendMessageWithRetry(message, maxRetries = 2) {

@@ -1,6 +1,6 @@
 {
   "name": "proxly-browser-extensions",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Browser extensions for Proxly - Route web links through Proxly for intelligent browser selection",
   "main": "scripts/build.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build:chrome": "node scripts/build.js chrome",
     "build:firefox": "node scripts/build.js firefox",
     "clean": "rm -rf build/",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
+    "dev": "node scripts/dev-build.js",
     "lint": "eslint shared/ chrome/ firefox/",
     "validate": "node scripts/validate.js"
   },
@@ -31,7 +32,7 @@
     "fs-extra": "^11.0.0"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.17.0"
   },
   "repository": {
     "type": "git",

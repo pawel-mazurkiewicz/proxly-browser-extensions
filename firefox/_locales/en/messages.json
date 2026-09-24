@@ -248,5 +248,11 @@
   "openSettings": { "message": "Settings", "description": "Button text for opening settings" },
   "checkingConnection": { "message": "Checking connection...", "description": "Status message when checking connection" },
   "logoAlt": { "message": "Proxly", "description": "Alt text for Proxly logo" },
-  "toggleExtension": { "message": "Toggle Proxly extension on/off", "description": "ARIA label for main toggle" }
+  "toggleExtension": { "message": "Toggle Proxly extension on/off", "description": "ARIA label for main toggle" },
+  "keepLinksTitle": { "message": "Keep links in this tab", "description": "Toggle that keeps links in the current tab when Proxly would open them there" },
+  "keepLinksDescription": { "message": "Links Proxly would open in this browser stay in the current tab. Needs a current version of Proxly.", "description": "Explains the Keep links in this tab toggle" },
+  "keepLinksOff": { "message": "Off: links to other sites go to Proxly", "description": "Keep links status when the toggle is off" },
+  "keepLinksReady": { "message": "On: connected to Proxly", "description": "Keep links status when Proxly answers" },
+  "keepLinksNeedsSetup": { "message": "Proxly isn't set up for this yet", "description": "Keep links status when Proxly cannot be reached" },
+  "keepLinksSetUp": { "message": "Set up in Proxly", "description": "Button that opens Proxly to set up the connection" }
 }

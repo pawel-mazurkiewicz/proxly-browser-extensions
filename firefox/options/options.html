@@ -89,6 +89,20 @@
         </div>
       </section>
 
+      <section class="setting-section" role="group">
+        <h2 data-i18n="keepLinksTitle">Keep links in this tab</h2>
+        <p class="setting-description" data-i18n="keepLinksDescription">
+          Links Proxly would open in this browser stay in the current tab.
+        </p>
+        <label class="checkbox-option">
+          <input type="checkbox" id="keep-links-toggle" aria-describedby="keep-links-status">
+          <span class="checkbox-custom" aria-hidden="true"></span>
+          <span class="option-text" data-i18n="keepLinksTitle">Keep links in this tab</span>
+        </label>
+        <p id="keep-links-status" class="option-description" role="status" aria-live="polite"></p>
+        <button type="button" class="save-button" id="keep-links-setup" style="display: none" data-i18n="keepLinksSetUp">Set up in Proxly</button>
+      </section>
+
       <section class="setting-section info-section" role="group">
         <h2 data-i18n="installationTitle">Installation Status</h2>
         <div class="installation-status">
@@ -147,6 +161,7 @@
   <script src="../shared/localization.js"></script>
   <script src="../shared/accessibility.js"></script>
   <script src="../shared/settings-manager.js"></script>
+  <script src="../shared/keep-links.js"></script>
   <script src="options.js"></script>
 </body>
 </html>

@@ -112,90 +112,17 @@ class ExtensionBuilder {
   }
 
   async generateManifest(platform, destDir) {
-    const manifest = this.createManifestForPlatform(platform);
-    
+    // The platform folder's manifest.json is the source of truth. A template here once drifted
+    // from it and produced packages without the shared scripts and permissions they need.
+    const manifest = await fs.readJSON(path.join(this.sourceDir, platform, 'manifest.json'));
+
     await fs.writeJSON(
       path.join(destDir, 'manifest.json'),
       manifest,
       { spaces: 2 }
     );
-    
-    console.log(`  📄 Generated ${platform} manifest`);
-  }
 
-  createManifestForPlatform(platform) {
-    const baseManifest = {
-      name: this.config.name || 'Proxly Browser Extension',
-      description: this.config.description || 'Route web links through Proxly for intelligent browser selection',
-      version: this.config.version || '1.0.0',
-      icons: {
-        16: 'icons/icon-16.png',
-        48: 'icons/icon-48.png',
-        128: 'icons/icon-128.png',
-        256: 'icons/icon-256.png'
-      },
-      default_locale: 'en',
-      permissions: ['contextMenus', 'storage'],
-      host_permissions: ['<all_urls>'],
-      content_scripts: [{
-        matches: ['<all_urls>'],
-        js: [
-          'shared/constants.js',
-          'shared/localization.js', 
-          'shared/accessibility.js',
-          'shared/settings-manager.js',
-          'content-script.js'
-        ],
-        run_at: 'document_start'
-      }],
-      options_ui: {
-        page: 'options/options.html',
-        open_in_tab: true
-      }
-    };
-    
-    switch (platform) {
-      case 'chrome':
-        return {
-          ...baseManifest,
-          manifest_version: 3,
-          background: {
-            service_worker: 'background.js'
-          },
-          content_security_policy: {
-            extension_pages: "script-src 'self'; object-src 'self'; frame-ancestors 'none';"
-          }
-        };
-        
-      case 'firefox':
-        return {
-          ...baseManifest,
-          manifest_version: 2,
-          background: {
-            scripts: [
-              'shared/constants.js',
-              'shared/localization.js',
-              'shared/settings-manager.js',
-              'background.js'
-            ],
-            persistent: false
-          },
-          permissions: [...baseManifest.permissions, '<all_urls>'],
-          browser_specific_settings: {
-            gecko: {
-              id: 'proxly-extension@proxly.app',
-              strict_min_version: '79.0'
-            }
-          },
-          options_ui: {
-            ...baseManifest.options_ui,
-            chrome_style: false
-          }
-        };
-        
-      default:
-        throw new Error(`Unsupported platform: ${platform}`);
-    }
+    console.log(`  📄 Copied ${platform} manifest (version ${manifest.version})`);
   }
 
   async copyLocalizationFiles(destDir) {
@@ -247,7 +174,8 @@ class ExtensionBuilder {
 
   async packagePlatform(platform, distDir) {
     const platformBuildDir = path.join(this.buildDir, platform);
-    const packageName = `proxly-extension-${platform}-v${this.config.version || '1.0.0'}.zip`;
+    const { version } = await fs.readJSON(path.join(platformBuildDir, 'manifest.json'));
+    const packageName = `proxly-extension-${platform}-v${version}.zip`;
     const packagePath = path.join(distDir, packageName);
     
     return new Promise((resolve, reject) => {

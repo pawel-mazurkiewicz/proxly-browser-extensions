@@ -32,6 +32,8 @@
         "shared/localization.js", 
         "shared/accessibility.js",
         "shared/settings-manager.js",
+        "shared/public-suffix-data.js",
+        "shared/same-site.js",
         "content.js"
       ],
       "run_at": "document_idle"

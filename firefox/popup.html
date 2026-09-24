@@ -63,6 +63,21 @@
       </div>
     </div>
 
+    <div class="toggle-section" id="keep-links-section">
+      <div class="toggle-label">
+        <span data-i18n="keepLinksTitle">Keep links in this tab</span>
+      </div>
+      <label class="toggle-switch" data-i18n-attr="aria-label:keepLinksTitle">
+        <input type="checkbox" id="keep-links-toggle" aria-describedby="keep-links-status">
+        <span class="slider"></span>
+      </label>
+      <p class="toggle-description">
+        <span data-i18n="keepLinksDescription">Links Proxly would open in this browser stay in the current tab.</span>
+      </p>
+      <p id="keep-links-status" class="toggle-description" role="status" aria-live="polite"></p>
+      <button type="button" class="action-button" id="keep-links-setup" style="display: none" data-i18n="keepLinksSetUp">Set up in Proxly</button>
+    </div>
+
     <div class="quick-actions">
       <button type="button" class="action-button" id="open-options" data-i18n-attr="aria-label:openSettings">
         <span data-i18n="openSettings">Settings</span>
@@ -85,6 +100,7 @@
   <script src="shared/constants.js"></script>
   <script src="shared/localization.js"></script>
   <script src="shared/accessibility.js"></script>
+  <script src="shared/keep-links.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
