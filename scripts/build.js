@@ -10,10 +10,10 @@ const path = require('path');
 const archiver = require('archiver');
 
 class ExtensionBuilder {
-  constructor() {
+  constructor({ buildDir, sourceDir } = {}) {
     this.projectRoot = path.resolve(__dirname, '..');
-    this.buildDir = path.join(this.projectRoot, 'build');
-    this.sourceDir = this.projectRoot;
+    this.buildDir = buildDir || path.join(this.projectRoot, 'build');
+    this.sourceDir = sourceDir || this.projectRoot;
     
     this.platforms = ['chrome', 'firefox'];
     
@@ -77,8 +77,8 @@ class ExtensionBuilder {
     // Copy localization files
     await this.copyLocalizationFiles(platformBuildDir);
     
-    // Copy icons (create placeholder if missing)
-    await this.copyIcons(platformBuildDir);
+    // Check that every icon the manifest names was copied
+    await this.verifyIcons(platform, platformBuildDir);
     
     console.log(`✅ ${platform} extension built successfully`);
   }
@@ -135,30 +135,23 @@ class ExtensionBuilder {
     }
   }
 
-  async copyIcons(destDir) {
-    const iconsDir = path.join(this.sourceDir, 'icons');
-    const iconsDestDir = path.join(destDir, 'icons');
-    
-    if (await fs.pathExists(iconsDir)) {
-      await fs.copy(iconsDir, iconsDestDir);
-      console.log('  🎨 Copied icon files');
-    } else {
-      // Create placeholder icons
-      await this.createPlaceholderIcons(iconsDestDir);
-      console.log('  🎨 Created placeholder icons');
-    }
-  }
+  async verifyIcons(platform, destDir) {
+    // The platform folder supplies the icons. This step once wrote 1×1 placeholders over them,
+    // and the packages shipped blank icons, so a missing icon now fails the build instead.
+    const manifest = await fs.readJSON(path.join(destDir, 'manifest.json'));
+    const action = manifest.action || manifest.browser_action || {};
+    const iconPaths = new Set(
+      [manifest.icons, action.default_icon]
+        .filter(Boolean)
+        .flatMap((icons) => (typeof icons === 'string' ? [icons] : Object.values(icons)))
+    );
 
-  async createPlaceholderIcons(iconsDir) {
-    await fs.ensureDir(iconsDir);
-    
-    const sizes = [16, 48, 128, 256];
-    const placeholderContent = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
-    
-    for (const size of sizes) {
-      const iconPath = path.join(iconsDir, `icon-${size}.png`);
-      await fs.writeFile(iconPath, Buffer.from(placeholderContent.split(',')[1], 'base64'));
+    for (const iconPath of iconPaths) {
+      if (!(await fs.pathExists(path.join(destDir, iconPath)))) {
+        throw new Error(`Missing icon for ${platform}: ${iconPath}`);
+      }
     }
+    console.log(`  🎨 Checked ${iconPaths.size} icons`);
   }
 
   async createDistributionPackages() {
